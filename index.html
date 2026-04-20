@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Avatar Creations | Scale Your Presence Without Filming Yourself</title>
+<meta name="description" content="Done-for-you video content for busy professionals. From social media to corporate training. Ready to publish. No camera required."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-alt: #F4F1EB;
+  --white: #FFFFFF;
+  --navy-deep: #07091C;
+  --navy: #0C1235;
+  --navy-mid: #0F215A;
+  --gold: #C9A347;
+  --gold-mid: #D9B85A;
+  --gold-pale: #F5E4A8;
+  --ink: #0A0B18;
+  --ink-mid: #3C3F66;
+  --ink-soft: #6B6E99;
+  --ink-muted: #A8ABCC;
+  --border: #E0DAD0;
+  --border-gold: rgba(201,163,71,.2);
+  --f-display: 'Cinzel', serif;
+  --f-elegant: 'Cormorant Garamond', Georgia, serif;
+  --f-body: 'DM Sans', sans-serif;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--f-body);
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.w { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 72px; padding: 0 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(250,250,247,.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border); transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 1px 24px rgba(10,11,24,.06); }
+
+.nav-logo { display: flex; align-items: center; gap: .75rem; }
+.nav-logo img { height: 52px; width: 52px; object-fit: contain; border-radius: 50%; clip-path: circle(49% at 50% 50%); }
+.nav-logo-text {
+  font-family: var(--f-display); font-size: .84rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--navy); font-weight: 600; line-height: 1.3;
+}
+.nav-logo-text span {
+  display: block; font-family: var(--f-elegant); font-size: .78rem;
+  font-style: italic; font-weight: 300; letter-spacing: .04em;
+  text-transform: none; color: var(--ink-mid);
+}
+
+.nav-links { display: flex; align-items: center; gap: 2.2rem; }
+.nav-links a {
+  font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  font-weight: 500; color: var(--ink-mid); transition: color .25s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  font-size: .66rem !important; letter-spacing: .12em !important;
+  padding: .6rem 1.5rem; background: var(--gold); color: var(--navy-deep) !important;
+  font-weight: 600 !important; border-radius: 3px; transition: background .25s, transform .25s;
+}
+.nav-cta:hover { background: var(--gold-mid); transform: translateY(-1px); }
+
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .5rem; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--navy); margin: 5px 0; transition: .3s; }
+
+/* ─── BUTTONS ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: 1rem 2.2rem; background: var(--gold); color: var(--navy-deep);
+  font-family: var(--f-body); font-size: .78rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; border: none;
+  border-radius: 3px; cursor: pointer;
+  transition: background .25s, transform .25s, box-shadow .25s;
+}
+.btn-primary:hover { background: var(--gold-mid); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,163,71,.25); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: 1rem 2rem; background: transparent; color: var(--navy-mid);
+  font-family: var(--f-body); font-size: .78rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: 1.5px solid var(--navy-mid); border-radius: 3px; cursor: pointer;
+  transition: all .25s;
+}
+.btn-secondary:hover { background: var(--navy-mid); color: var(--white); transform: translateY(-2px); }
+
+/* ─── SECTIONS ─── */
+.section { padding: 6rem 0; }
+.section-eyebrow {
+  font-size: .58rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.section-title {
+  font-family: var(--f-elegant); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400; line-height: 1.15; color: var(--navy-deep); margin-bottom: 1rem;
+}
+.section-title em { color: var(--gold); font-style: italic; }
+.section-sub {
+  font-size: .92rem; line-height: 1.8; color: var(--ink-mid);
+  max-width: 560px; font-weight: 300;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 7rem 0 5rem; background: var(--bg); position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+  background: radial-gradient(ellipse at 70% 40%, rgba(201,163,71,.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: var(--f-elegant); font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 400; line-height: 1.12; color: var(--navy-deep); margin-bottom: 1.5rem;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-size: 1rem; line-height: 1.8; color: var(--ink-mid);
+  max-width: 460px; margin-bottom: 2rem; font-weight: 300;
+}
+.hero-cta { margin-bottom: 2.5rem; }
+.hero-trust { display: flex; gap: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.hero-trust-item {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .7rem; color: var(--ink-soft); font-weight: 400;
+}
+.hero-trust-item svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+/* Hero video */
+.hero-video-wrap {
+  position: relative; border-radius: 6px; overflow: hidden;
+  box-shadow: 0 12px 60px rgba(10,11,24,.12), 0 0 0 1px rgba(201,163,71,.1);
+  aspect-ratio: 9/16; max-height: 520px;
+  margin: 0 auto;
+}
+.hero-video-wrap video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.hero-video-badge {
+  position: absolute; bottom: .75rem; left: .75rem;
+  background: rgba(7,9,28,.7); backdrop-filter: blur(8px);
+  padding: .35rem .75rem; border-radius: 3px;
+  font-size: .56rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600;
+}
+
+/* ─── HOW IT WORKS ─── */
+.how { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.how-step {
+  background: var(--bg); padding: 2rem 1.75rem; border-top: 2px solid var(--border-gold);
+  transition: border-color .3s, box-shadow .3s;
+}
+.how-step:hover { border-color: var(--gold); box-shadow: 0 4px 24px rgba(10,11,24,.04); }
+.step-num { font-family: var(--f-display); font-size: .56rem; letter-spacing: .15em; color: var(--gold); margin-bottom: 1.25rem; }
+.step-icon {
+  width: 40px; height: 40px; border: 1px solid var(--border-gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+  transition: border-color .3s;
+}
+.how-step:hover .step-icon { border-color: var(--gold); }
+.step-icon svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.step-title {
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 700; color: var(--navy-deep); margin-bottom: .5rem;
+}
+.step-desc { font-size: .82rem; line-height: 1.7; color: var(--ink-mid); font-weight: 300; }
+
+/* ─── DEMOS ─── */
+.demos { background: var(--bg); }
+.demos-group { margin-bottom: 3rem; }
+.demos-group:last-child { margin-bottom: 0; }
+.demos-label {
+  font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: 1.25rem;
+  padding-bottom: .75rem; border-bottom: 1px solid var(--border-gold);
+}
+.demos-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.demo-card {
+  position: relative; border-radius: 6px; overflow: hidden;
+  background: var(--navy-deep); cursor: pointer;
+  box-shadow: 0 4px 28px rgba(10,11,24,.1);
+  transition: box-shadow .3s, transform .3s;
+  aspect-ratio: 16/9;
+}
+.demo-card.portrait {
+  aspect-ratio: 9/16;
+  max-height: 480px;
+}
+.demo-card:hover { box-shadow: 0 8px 40px rgba(10,11,24,.16); transform: translateY(-3px); }
+.demo-card video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.demo-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,9,28,.7) 0%, transparent 50%);
+  pointer-events: none; transition: opacity .3s;
+}
+.demo-card:hover .demo-card-overlay { opacity: .6; }
+.demo-card-info {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem;
+  z-index: 2; pointer-events: none;
+}
+.demo-card-name {
+  font-size: .66rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; color: var(--gold); margin-bottom: .2rem;
+}
+.demo-card-desc { font-size: .72rem; color: rgba(255,255,255,.7); font-weight: 300; }
+.demo-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(201,163,71,.85); display: flex; align-items: center; justify-content: center;
+  z-index: 3; transition: transform .3s, background .3s; pointer-events: none;
+}
+.demo-card:hover .demo-play { transform: translate(-50%, -50%) scale(1.08); background: var(--gold); }
+.demo-play svg { width: 18px; height: 18px; fill: var(--navy-deep); margin-left: 2px; }
+.demos-tagline {
+  margin-top: 2rem; font-size: .78rem; font-style: italic; color: var(--ink-soft);
+  font-family: var(--f-elegant); font-weight: 300; text-align: center;
+}
+
+/* ─── OFFERS ─── */
+.offers { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.offers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+.offer-card {
+  background: var(--bg); border: 1px solid var(--border); border-top: 3px solid var(--border-gold);
+  border-radius: 4px; padding: 2.5rem; transition: box-shadow .3s;
+}
+.offer-card:hover { box-shadow: 0 8px 40px rgba(10,11,24,.06); }
+.offer-card h3 {
+  font-family: var(--f-elegant); font-size: 1.45rem; font-weight: 400;
+  color: var(--navy-deep); margin-bottom: .5rem;
+}
+.offer-subtitle { font-size: .8rem; color: var(--ink-soft); font-weight: 300; margin-bottom: 1.5rem; line-height: 1.6; }
+.offer-divider { width: 36px; height: 1px; background: var(--gold); margin-bottom: 1.5rem; }
+.offer-list { list-style: none; display: flex; flex-direction: column; gap: .85rem; margin-bottom: 2rem; }
+.offer-list li {
+  display: flex; align-items: flex-start; gap: .75rem;
+  font-size: .84rem; line-height: 1.65; color: var(--ink-mid);
+}
+.offer-list li svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: .2rem; }
+.offer-cta { text-align: center; }
+
+/* ─── QUESTIONS ─── */
+.questions { background: var(--bg); }
+.questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; margin-top: 3rem; }
+.q-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+.q-question {
+  font-family: var(--f-elegant); font-size: 1.05rem; font-style: italic;
+  font-weight: 400; color: var(--navy-deep); margin-bottom: .5rem;
+}
+.q-answer { font-size: .84rem; line-height: 1.75; color: var(--ink-mid); font-weight: 300; }
+
+/* ─── FINAL CTA ─── */
+.final-cta {
+  background: var(--bg-alt); border-top: 1px solid var(--border);
+  padding: 5rem 0; text-align: center;
+}
+.final-cta h2 {
+  font-family: var(--f-elegant); font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300; font-style: italic; color: var(--navy-deep);
+  line-height: 1.3; margin-bottom: 1rem;
+}
+.final-cta h2 em { color: var(--gold); }
+.final-cta-sub {
+  font-size: .8rem; color: var(--ink-soft); margin-bottom: 2rem;
+  font-style: italic; font-weight: 300;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy-deep); padding: 3.5rem 3rem;
+  border-top: 1px solid rgba(201,163,71,.1);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 2rem;
+}
+.footer-brand { display: flex; align-items: center; gap: .75rem; }
+.footer-brand img {
+  height: 52px; width: 52px; object-fit: contain; border-radius: 50%;
+  clip-path: circle(49% at 50% 50%);
+  filter: brightness(1.3) drop-shadow(0 0 12px rgba(201,163,71,.3));
+}
+.footer-brand-text {
+  font-family: var(--f-display); font-size: 1rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold); font-weight: 600;
+}
+.footer-brand-text span {
+  display: block; font-family: var(--f-elegant); font-size: .88rem;
+  font-style: italic; font-weight: 300; letter-spacing: .04em;
+  text-transform: none; color: rgba(201,163,71,.85);
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: .76rem; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(201,163,71,.9); font-weight: 500; transition: color .25s;
+}
+.footer-links a:hover { color: var(--gold-mid); }
+.footer-bottom {
+  max-width: 1200px; margin: 1.5rem auto 0; padding-top: 1.25rem;
+  border-top: 1px solid rgba(201,163,71,.2);
+  display: flex; justify-content: space-between;
+  font-size: .78rem; color: rgba(201,163,71,.85); letter-spacing: .06em;
+}
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 72px; left: 0; right: 0; background: rgba(250,250,247,.98);
+    backdrop-filter: blur(20px); padding: 2rem; gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-toggle { display: block; }
+  .w { padding: 0 1.5rem; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-content { order: 2; }
+  .hero-video-wrap { order: 1; max-height: 400px; max-width: 280px; }
+  .hero-sub { margin: 0 auto 2rem; }
+  .hero-cta { display: flex; justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-eyebrow { justify-content: center; }
+  .how-steps { grid-template-columns: 1fr 1fr; }
+  .demos-row { grid-template-columns: 1fr; }
+  .offers-grid { grid-template-columns: 1fr; }
+  .questions-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .how-steps { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.9rem; }
+  nav { height: 64px; }
+  .offer-card { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <img src="images/logo-sigil.png" alt="AI Avatar Creations"/>
+    <div class="nav-logo-text">
+      AI Avatar Creations
+      <span>Sharing Your Knowledge</span>
+    </div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#how">How It Works</a>
+    <a href="#demos">See It in Action</a>
+    <a href="#offers">Offers</a>
+    <a href="#questions">Questions</a>
+    <a href="https://calendly.com/cosminabalu/ai-avatar-creations-discovery-call" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+  <div class="w">
+    <div class="hero-inner">
+      <div class="hero-content reveal">
+        <div class="hero-eyebrow">Done-for-You Video Content</div>
+        <h1>Scale Your Presence <em>Without Filming Yourself</em></h1>
+        <p class="hero-sub">Consistent, professional video content delivered ready to publish. No camera. No editing. No stress. You focus on your work.</p>
+        <div class="hero-cta">
+          <a href="https://calendly.com/cosminabalu/ai-avatar-creations-discovery-call" target="_blank" class="btn-primary">
+            Book a Discovery Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            No filming required
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Ready-to-publish delivery
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Built for busy professionals
+          </div>
+        </div>
+      </div>
+      <div class="hero-video-wrap reveal">
+        <video id="heroVideo" autoplay muted loop playsinline>
+          <source src="videos/cosmina-demo.mp4" type="video/mp4"/>
+        </video>
+        <div class="hero-video-badge" id="heroSoundBadge" style="cursor:pointer">Click for sound</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section class="section how reveal" id="how">
+  <div class="w">
+    <div class="section-eyebrow">The Process</div>
+    <h2 class="section-title">How <em>it works</em></h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+        <div class="step-title">Capture</div>
+        <div class="step-desc">We capture your brand voice and message.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="step-title">Create</div>
+        <div class="step-desc">We produce professional videos in your style.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="step-title">Deliver</div>
+        <div class="step-desc">You receive polished videos ready to use.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">04</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="step-title">Scale</div>
+        <div class="step-desc">Your presence stays active consistently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DEMOS ═══════════ -->
+<section class="section demos reveal" id="demos">
+  <div class="w">
+    <div class="section-eyebrow">See It in Action</div>
+    <h2 class="section-title">Real projects. <em>Real results.</em></h2>
+
+    <!-- Experts & Educators -->
+    <div class="demos-group">
+      <div class="demos-label">Experts & Educators</div>
+      <div class="demos-row">
+        <div class="demo-card portrait" data-video="videos/cosmina-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/cosmina-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">Cosmina</div>
+            <div class="demo-card-desc">Coaches & Educators</div>
+          </div>
+        </div>
+        <div class="demo-card portrait" data-video="videos/anto-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/anto-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">Anto / Prospera Holistica</div>
+            <div class="demo-card-desc">Naturopath</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business & Industry -->
+    <div class="demos-group">
+      <div class="demos-label">Business & Industry</div>
+      <div class="demos-row">
+        <div class="demo-card" data-video="videos/abc-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/abc-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">ABC Constructions</div>
+            <div class="demo-card-desc">Employee Onboarding</div>
+          </div>
+        </div>
+        <div class="demo-card" data-video="videos/oilgas-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/oilgas-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">Oil & Gas Plants</div>
+            <div class="demo-card-desc">Safety Training</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demos-tagline">From social media to corporate training -- one system, any industry.</div>
+  </div>
+</section>
+
+<!-- ═══════════ OFFERS ═══════════ -->
+<section class="section offers reveal" id="offers">
+  <div class="w">
+    <div style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center">Choose Your Plan</div>
+      <h2 class="section-title">Two ways to <em>work together</em></h2>
+    </div>
+    <div class="offers-grid">
+      <!-- Path A -->
+      <div class="offer-card">
+        <h3>For Experts & Educators</h3>
+        <div class="offer-subtitle">Stay visible and consistent on social media without being on camera, scripting, or editing. You serve clients. We handle the content.</div>
+        <div class="offer-divider"></div>
+        <ul class="offer-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consistent video presence built around your brand</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Monthly content delivered ready to publish</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scripts developed from your expertise</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your visibility runs while you focus on your work</li>
+        </ul>
+        <div class="offer-cta">
+          <a href="https://calendly.com/cosminabalu/ai-avatar-creations-discovery-call" target="_blank" class="btn-primary">
+            Book a Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Path B -->
+      <div class="offer-card">
+        <h3>For Business & Industry</h3>
+        <div class="offer-subtitle">Professional training, onboarding, and internal communication videos produced and delivered without pulling your team into a studio.</div>
+        <div class="offer-divider"></div>
+        <ul class="offer-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Training and onboarding videos for your organization</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scripted, produced, and delivered ready to deploy</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Multi-speaker and multi-language options</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scalable across departments and locations</li>
+        </ul>
+        <div class="offer-cta">
+          <a href="https://calendly.com/cosminabalu/ai-avatar-creations-discovery-call" target="_blank" class="btn-primary">
+            Book a Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUESTIONS ═══════════ -->
+<section class="section questions reveal" id="questions">
+  <div class="w">
+    <div class="section-eyebrow">Common Questions</div>
+    <h2 class="section-title">Honest answers to <em>real concerns</em></h2>
+    <div class="questions-grid">
+      <div class="q-item">
+        <div class="q-question">"Will it still feel authentic?"</div>
+        <div class="q-answer">Built around your brand, your message, and your style. The goal is to help your voice show up consistently.</div>
+      </div>
+      <div class="q-item">
+        <div class="q-question">"Will people think it is AI?"</div>
+        <div class="q-answer">Trust comes from clarity, consistency, and alignment. Not from how the video was made.</div>
+      </div>
+      <div class="q-item">
+        <div class="q-question">"I am not tech-savvy."</div>
+        <div class="q-answer">That is why it is done for you. You receive finished videos.</div>
+      </div>
+      <div class="q-item">
+        <div class="q-question">"How fast can I get started?"</div>
+        <div class="q-answer">Book a discovery call and we scope your project within the first session.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="final-cta reveal" id="start">
+  <div class="w">
+    <h2>Your expertise deserves <em>to be seen.</em></h2>
+    <div class="final-cta-sub">Every inquiry is read personally.</div>
+    <a href="https://calendly.com/cosminabalu/ai-avatar-creations-discovery-call" target="_blank" class="btn-primary">
+      Book Your Discovery Call
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-transparent.png" alt="AI Avatar Creations"/>
+      <div class="footer-brand-text">
+        AI Avatar Creations
+        <span>Sharing Your Knowledge</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#how">How It Works</a>
+      <a href="#demos">Demos</a>
+      <a href="#offers">Offers</a>
+      <a href="https://calendly.com/cosminabalu/ai-avatar-creations-discovery-call" target="_blank">Book a Call</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Bogata Informatique Inc. &middot; Calgary, Alberta, Canada</span>
+    <span>&copy; 2025 AI Avatar Creations. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+
+// Mobile menu
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); });
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 20;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// Hero video unmute on click
+const heroVideo = document.getElementById('heroVideo');
+const heroBadge = document.getElementById('heroSoundBadge');
+heroVideo.addEventListener('click', () => {
+  heroVideo.muted = !heroVideo.muted;
+  heroBadge.textContent = heroVideo.muted ? 'Click for sound' : 'Sound on';
+});
+heroBadge.addEventListener('click', () => {
+  heroVideo.muted = !heroVideo.muted;
+  heroBadge.textContent = heroVideo.muted ? 'Click for sound' : 'Sound on';
+});
+
+// Demo video play/pause on click with audio
+document.querySelectorAll('.demo-card').forEach(card => {
+  const video = card.querySelector('video');
+  const playBtn = card.querySelector('.demo-play');
+  let playing = false;
+  card.addEventListener('click', () => {
+    if (playing) {
+      video.pause();
+      video.muted = true;
+      playBtn.style.opacity = '1';
+      playing = false;
+    } else {
+      // Pause all other demo videos
+      document.querySelectorAll('.demo-card video').forEach(v => {
+        v.pause();
+        v.muted = true;
+        v.closest('.demo-card').querySelector('.demo-play').style.opacity = '1';
+      });
+      video.muted = false;
+      video.play();
+      playBtn.style.opacity = '0';
+      playing = true;
+    }
+  });
+  video.addEventListener('ended', () => { video.muted = true; playBtn.style.opacity = '1'; playing = false; });
+});
+</script>
+
+</body>
+</html>
