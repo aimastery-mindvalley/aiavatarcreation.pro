@@ -174,6 +174,42 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(10,11,24,.06); }
   color: var(--gold); font-weight: 600;
 }
 
+/* ─── TWO DOORS ─── */
+.two-doors { background: var(--navy-deep); padding: 6rem 0; }
+.two-doors-header { text-align: center; margin-bottom: 4rem; }
+.two-doors-title {
+  font-family: var(--f-elegant); font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem;
+}
+.two-doors-title em { color: var(--gold); font-style: italic; }
+.two-doors-sub {
+  font-size: .95rem; line-height: 1.85; color: rgba(255,255,255,.6);
+  max-width: 680px; margin: 0 auto; font-weight: 300;
+}
+.doors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.door-card {
+  background: rgba(255,255,255,.04); border-left: 3px solid var(--gold);
+  padding: 2.5rem; border-radius: 0 4px 4px 0;
+}
+.door-label {
+  font-size: .56rem; letter-spacing: .25em; text-transform: uppercase;
+  font-weight: 600; color: var(--gold); margin-bottom: 1.25rem;
+}
+.door-heading {
+  font-family: var(--f-elegant); font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400; color: var(--white); line-height: 1.15; margin-bottom: 1.25rem;
+}
+.door-heading em { color: var(--gold); font-style: italic; }
+.door-body {
+  font-size: .88rem; line-height: 1.85; color: rgba(255,255,255,.6);
+  font-weight: 300; margin-bottom: 1.5rem;
+}
+.door-line { width: 100%; height: 1px; background: rgba(201,163,71,.2); margin-bottom: 1.5rem; }
+.door-quote {
+  font-family: var(--f-elegant); font-size: 1rem; font-style: italic;
+  font-weight: 300; color: var(--gold); line-height: 1.5;
+}
+
 /* ─── HOW IT WORKS ─── */
 .how { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
@@ -361,6 +397,7 @@ footer {
   .how-steps { grid-template-columns: 1fr 1fr; }
   .demos-row { grid-template-columns: 1fr; }
   .offers-grid { grid-template-columns: 1fr; }
+  .doors-grid { grid-template-columns: 1fr; }
   .questions-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
@@ -428,6 +465,32 @@ footer {
           <source src="videos/cosmina-demo.mp4" type="video/mp4"/>
         </video>
         <div class="hero-video-badge" id="heroSoundBadge" style="cursor:pointer">Click for sound</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TWO DOORS ═══════════ -->
+<section class="two-doors reveal">
+  <div class="w">
+    <div class="two-doors-header">
+      <h2 class="two-doors-title">One <em>house.</em> Two doors.</h2>
+      <p class="two-doors-sub">Individual experts enter through one door. Organisations enter through another. Inside, the craft, the standards, and the promise are the same.</p>
+    </div>
+    <div class="doors-grid">
+      <div class="door-card">
+        <div class="door-label">Door One / For Experts</div>
+        <h3 class="door-heading">Scale your <em>presence.</em></h3>
+        <p class="door-body">For the coach, the naturopath, the consultant, the educator. The person whose knowledge is ready and whose calendar is not. We deliver consistent, publishable video content built inside your accounts, in your voice, on a rhythm you can keep.</p>
+        <div class="door-line"></div>
+        <div class="door-quote">Your expertise is already valuable. Now it is visible.</div>
+      </div>
+      <div class="door-card">
+        <div class="door-label">Door Two / For Organisations</div>
+        <h3 class="door-heading">Scale your <em>training.</em></h3>
+        <p class="door-body">For HR, operations, training, and leadership. The teams whose knowledge lives in meetings, manuals, and the heads of busy managers. We deliver onboarding and internal communication videos, ready to deploy across departments, locations, and languages.</p>
+        <div class="door-line"></div>
+        <div class="door-quote">Your team's knowledge should not live only in meetings.</div>
       </div>
     </div>
   </div>
