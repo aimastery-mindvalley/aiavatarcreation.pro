@@ -309,13 +309,18 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(10,11,24,.06); }
 
 /* ─── QUESTIONS ─── */
 .questions { background: var(--bg); }
-.questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; margin-top: 3rem; }
-.q-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+.questions-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+.q-column-label {
+  font-size: .72rem; letter-spacing: .25em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: 1.25rem;
+  padding-bottom: .75rem; border-bottom: 1px solid var(--border-gold);
+}
+.q-item { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
 .q-question {
-  font-family: var(--f-elegant); font-size: 1.2rem; font-style: italic;
+  font-family: var(--f-elegant); font-size: 1.15rem; font-style: italic;
   font-weight: 500; color: var(--navy-deep); margin-bottom: .5rem;
 }
-.q-answer { font-size: 1rem; line-height: 1.75; color: var(--ink-mid); font-weight: 400; }
+.q-answer { font-size: .95rem; line-height: 1.75; color: var(--ink-mid); font-weight: 400; }
 
 /* ─── FINAL CTA ─── */
 .final-cta {
@@ -398,6 +403,7 @@ footer {
   .demos-row { grid-template-columns: 1fr; }
   .offers-grid { grid-template-columns: 1fr; }
   .doors-grid { grid-template-columns: 1fr; }
+  .questions-split { grid-template-columns: 1fr; }
   .questions-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
@@ -614,22 +620,54 @@ footer {
   <div class="w">
     <div class="section-eyebrow">Common Questions</div>
     <h2 class="section-title">Honest answers to <em>real concerns</em></h2>
-    <div class="questions-grid">
-      <div class="q-item">
-        <div class="q-question">"Will it still feel authentic?"</div>
-        <div class="q-answer">Built around your brand, your message, and your style. The goal is to help your voice show up consistently.</div>
+    <div class="questions-split">
+      <!-- Experts & Educators -->
+      <div class="q-column">
+        <div class="q-column-label">Experts & Educators</div>
+        <div class="q-item">
+          <div class="q-question">"Will it still feel authentic?"</div>
+          <div class="q-answer">Built around your brand, your message, and your style. The goal is to help your voice show up consistently.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"Will people think it is AI?"</div>
+          <div class="q-answer">Trust comes from clarity, consistency, and alignment. Not from how the video was made.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"I am not tech-savvy."</div>
+          <div class="q-answer">That is why it is done for you. You receive finished videos.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"How fast can I get started?"</div>
+          <div class="q-answer">Book a discovery call and we scope your project within the first session.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"Do I own what you create for me?"</div>
+          <div class="q-answer">Yes. The videos, the scripts, and the assets built around your brand are yours.</div>
+        </div>
       </div>
-      <div class="q-item">
-        <div class="q-question">"Will people think it is AI?"</div>
-        <div class="q-answer">Trust comes from clarity, consistency, and alignment. Not from how the video was made.</div>
-      </div>
-      <div class="q-item">
-        <div class="q-question">"I am not tech-savvy."</div>
-        <div class="q-answer">That is why it is done for you. You receive finished videos.</div>
-      </div>
-      <div class="q-item">
-        <div class="q-question">"How fast can I get started?"</div>
-        <div class="q-answer">Book a discovery call and we scope your project within the first session.</div>
+      <!-- Business & Industry -->
+      <div class="q-column">
+        <div class="q-column-label">Business & Industry</div>
+        <div class="q-item">
+          <div class="q-question">"Can this reflect our company's tone and standards?"</div>
+          <div class="q-answer">Built on your brand voice, your visual standards, and your approval process. Nothing publishes without your sign-off.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"How much input will our team need to provide?"</div>
+          <div class="q-answer">The first phase is the heaviest. Defining voice, approvals, and source material together. From there, your team reviews scripts and signs off on outputs. That is the ongoing ask.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"Can you turn our existing documents or slide decks into videos?"</div>
+          <div class="q-answer">Yes. Your manuals, SOPs, and training decks become the source material. We structure, script, and produce from what you already have.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"Will this work for technical or industry-specific training?"</div>
+          <div class="q-answer">That is where this works best. Technical content, compliance modules, and specialized training all benefit from clear, repeatable delivery.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"Can we use multiple speakers or languages?"</div>
+          <div class="q-answer">Yes. Multiple avatar presenters, multiple languages, consistent delivery across every version.</div>
+        </div>
       </div>
     </div>
   </div>
