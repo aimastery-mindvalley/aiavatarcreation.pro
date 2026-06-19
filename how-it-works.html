@@ -27,6 +27,7 @@
   --navy-deep:#07091C; --navy:#0C1235; --navy-mid:#0F215A;
   --gold:#C9A347; --gold-mid:#D9B85A; --gold-pale:#F5E4A8;
   --ink:#0A0B18; --ink-mid:#3C3F66; --ink-soft:#6B6E99; --border:#E0DAD0;
+  --border-gold:rgba(201,163,71,.2);
   --f-display:'Cinzel',serif; --f-elegant:'Cormorant Garamond',Georgia,serif; --f-body:'DM Sans',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -76,6 +77,24 @@ a{color:var(--gold);text-decoration:none;}
 .demo-link a{font-weight:600;}
 footer{text-align:center;padding:2.5rem 0;color:var(--ink-soft);font-size:.8rem;border-top:1px solid var(--border);}
 @media(max-width:600px){.two{grid-template-columns:1fr;}}
+.demos-wrap{max-width:960px;margin:0 auto;padding:0 1.5rem;}
+.demos-group{margin-bottom:2rem;}
+.demos-group:last-child{margin-bottom:0;}
+.demos-label{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--border-gold);}
+.demos-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.demo-card{position:relative;border-radius:6px;overflow:hidden;background:var(--navy-deep);cursor:pointer;box-shadow:0 4px 28px rgba(10,11,24,.1);transition:box-shadow .3s,transform .3s;aspect-ratio:16/9;}
+.demo-card.portrait{aspect-ratio:9/16;max-height:480px;}
+.demo-card:hover{box-shadow:0 8px 40px rgba(10,11,24,.16);transform:translateY(-3px);}
+.demo-card video{width:100%;height:100%;object-fit:cover;display:block;}
+.demo-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,9,28,.7) 0%,transparent 50%);pointer-events:none;transition:opacity .3s;}
+.demo-card:hover .demo-card-overlay{opacity:.6;}
+.demo-card-info{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;z-index:2;pointer-events:none;}
+.demo-card-name{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:.2rem;}
+.demo-card-desc{font-size:.85rem;color:rgba(255,255,255,.85);font-weight:400;}
+.demo-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(201,163,71,.85);display:flex;align-items:center;justify-content:center;z-index:3;transition:transform .3s,background .3s;pointer-events:none;}
+.demo-card:hover .demo-play{transform:translate(-50%,-50%) scale(1.08);background:var(--gold);}
+.demo-play svg{width:18px;height:18px;fill:var(--navy-deep);margin-left:2px;}
+@media(max-width:600px){.demos-row{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -163,11 +182,71 @@ footer{text-align:center;padding:2.5rem 0;color:var(--ink-soft);font-size:.8rem;
 </section>
 
 <section>
-  <div class="w">
+  <div class="w" style="text-align:center;margin-bottom:2rem;">
     <div class="eyebrow">See it in action</div>
     <h2>The proof is not a brochure</h2>
-    <p>It is a real AI avatar, delivering a message on a podcast set, microphone and all, built with this exact process.</p>
-    <p class="demo-link"><a href="https://www.aiavatarcreation.pro/#demos">Watch real avatars in action &rarr;</a></p>
+    <p>Real AI avatars, built with this exact process. Click any video to play with sound.</p>
+  </div>
+  <div class="demos-wrap">
+    <!-- Experts & Educators -->
+    <div class="demos-group">
+      <div class="demos-label">Experts &amp; Educators</div>
+      <div class="demos-row">
+        <div class="demo-card portrait" data-video="videos/iliana-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/iliana-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">AI Avatar Creations</div>
+            <div class="demo-card-desc">Coaches</div>
+          </div>
+        </div>
+        <div class="demo-card portrait" data-video="videos/ai-bridge-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/ai-bridge-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">AI Bridge</div>
+            <div class="demo-card-desc">Experts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Business & Industry -->
+    <div class="demos-group">
+      <div class="demos-label">Business &amp; Industry</div>
+      <div class="demos-row">
+        <div class="demo-card" data-video="videos/abc-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/abc-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">ABC Constructions</div>
+            <div class="demo-card-desc">Employee Onboarding</div>
+          </div>
+        </div>
+        <div class="demo-card" data-video="videos/oilgas-demo.mp4">
+          <video muted loop playsinline preload="metadata">
+            <source src="videos/oilgas-demo.mp4" type="video/mp4"/>
+          </video>
+          <div class="demo-card-overlay"></div>
+          <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="demo-card-info">
+            <div class="demo-card-name">Oil &amp; Gas Plants</div>
+            <div class="demo-card-desc">Safety Training</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a class="btn" href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" rel="noopener">Book a Call</a>
+    </div>
   </div>
 </section>
 
@@ -196,6 +275,33 @@ footer{text-align:center;padding:2.5rem 0;color:var(--ink-soft);font-size:.8rem;
     badge.textContent = video.muted ? 'Tap for sound' : 'Sound on';
   });
 })();
+</script>
+
+<script>
+document.querySelectorAll('.demo-card').forEach(card => {
+  const video = card.querySelector('video');
+  const playBtn = card.querySelector('.demo-play');
+  let playing = false;
+  card.addEventListener('click', () => {
+    if (playing) {
+      video.pause();
+      video.muted = true;
+      playBtn.style.opacity = '1';
+      playing = false;
+    } else {
+      document.querySelectorAll('.demo-card video').forEach(v => {
+        v.pause();
+        v.muted = true;
+        v.closest('.demo-card').querySelector('.demo-play').style.opacity = '1';
+      });
+      playing = true;
+      video.muted = false;
+      video.play();
+      playBtn.style.opacity = '0';
+    }
+  });
+  video.addEventListener('ended', () => { video.muted = true; playBtn.style.opacity = '1'; playing = false; });
+});
 </script>
 
 </body>
