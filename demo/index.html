@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get your DEMO | AI Avatar Creations</title>
+<meta name="description" content="A short video in your own face and voice, built from a passage of your own teaching.">
+<meta name="robots" content="noindex">
+
+<!--
+  ==================================================================
+  DEMO GATE  ·  AI Avatar Creations
+  v4 · 2026-07-25
+
+  CHANGE FROM v3: the photo and the voice note are no longer
+  uploaded here. They come back as a REPLY to the confirmation
+  email, and that reply is the consent record: sent from the
+  prospect's own address, carrying her own attachments, against
+  the permission text quoted in the email.
+
+  Step 1 (4 fields): name, email, what you teach, the passage.
+  Step 2 (agreement): explains the email, records the permission.
+
+  One endpoint to configure: ENDPOINT, near the bottom.
+  Leave it empty to run in DEMO_MODE (logs, sends nothing).
+
+  GUIDE TITLE: the lead magnet is referred to as "Before You
+  Decide" throughout. If Cosmina picks a different title, it is
+  one find-and-replace here and in the spec.
+  ==================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --brand-black:#07091C; --deep-navy:#0C1235; --royal-navy:#131D55;
+    --blue-royal:#1A2870; --cobalt:#243399;
+    --royal-gold:#C9A347; --gold-mid:#D9B85A; --gold-bright:#EDD07A;
+    --gold-pale:#F5E4A8; --parchment:#F4F1EB; --ink:#0A0B18;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    font-family:var(--sans);background:var(--brand-black);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,40,112,.55), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 90% 110%, rgba(36,51,153,.28), transparent 70%);
+    background-attachment:fixed;color:var(--parchment);line-height:1.6;
+    -webkit-font-smoothing:antialiased;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;padding:32px 20px 64px;
+  }
+  .wrap{width:100%;max-width:620px}
+
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--royal-gold);font-weight:600;margin-bottom:18px;text-align:center}
+
+  h1{font-family:var(--serif);font-size:clamp(38px,7vw,54px);font-weight:500;
+    line-height:1.08;letter-spacing:-.01em;text-align:center;color:#fff;margin-bottom:20px}
+  h1 .gold{color:var(--royal-gold);font-style:italic}
+
+  .lede{font-size:16.5px;color:rgba(244,241,235,.82);text-align:center;max-width:540px;margin:0 auto 14px}
+  .honesty{font-size:14px;color:rgba(244,241,235,.56);text-align:center;max-width:540px;margin:0 auto 36px}
+
+  .card{
+    background:linear-gradient(180deg, rgba(19,29,85,.72), rgba(12,18,53,.86));
+    border:1px solid rgba(201,163,71,.24);border-radius:18px;padding:36px 32px 32px;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.7), inset 0 1px 0 rgba(245,228,168,.07);
+  }
+
+  .steps{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:28px}
+  .dot{width:7px;height:7px;border-radius:50%;background:rgba(201,163,71,.28);transition:background .25s ease}
+  .dot.on{background:var(--royal-gold)}
+  .steplabel{font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(244,241,235,.4);margin-left:4px}
+
+  .field{margin-bottom:24px}
+  label{display:block;font-size:14px;font-weight:600;color:var(--gold-pale);margin-bottom:6px;letter-spacing:.01em}
+  label .req{color:var(--royal-gold);margin-left:2px}
+  .hint{font-size:13px;color:rgba(244,241,235,.52);margin-bottom:10px;line-height:1.45}
+
+  input[type=text],input[type=email],textarea{
+    width:100%;font-family:var(--sans);font-size:15.5px;color:var(--parchment);
+    background:rgba(7,9,28,.62);border:1px solid rgba(201,163,71,.26);
+    border-radius:10px;padding:13px 15px;
+    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  textarea{resize:vertical;line-height:1.6}
+  #teaches{min-height:88px}
+  #script{min-height:150px;font-size:16px}
+  input::placeholder,textarea::placeholder{color:rgba(244,241,235,.3)}
+  input:focus,textarea:focus{outline:none;border-color:var(--royal-gold);
+    background:rgba(7,9,28,.85);box-shadow:0 0 0 3px rgba(201,163,71,.16)}
+  input[aria-invalid="true"],textarea[aria-invalid="true"]{
+    border-color:#E0736A;box-shadow:0 0 0 3px rgba(224,115,106,.14)}
+
+  .err{display:none;font-size:13px;color:#F0A49C;margin-top:7px}
+  .err.show{display:block}
+
+  .meter{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:9px}
+  .track{flex:1;height:3px;border-radius:3px;background:rgba(201,163,71,.16);overflow:hidden}
+  .fill{height:100%;width:0%;background:var(--royal-gold);border-radius:3px;
+    transition:width .18s ease, background .18s ease}
+  .count{font-size:12.5px;font-variant-numeric:tabular-nums;color:rgba(244,241,235,.44);white-space:nowrap}
+  .meter.good .fill{background:var(--gold-bright)}
+  .meter.good .count{color:var(--gold-bright)}
+  .meter.over .fill{background:#E0736A}
+  .meter.over .count{color:#F0A49C}
+
+  .consent{display:flex;align-items:flex-start;gap:11px;margin:26px 0 10px;
+    padding-top:22px;border-top:1px solid rgba(201,163,71,.16)}
+  .consent.tight{margin-top:6px;padding-top:0;border-top:none}
+  .consent input{appearance:none;flex:0 0 auto;width:19px;height:19px;margin-top:2px;
+    border:1px solid rgba(201,163,71,.5);border-radius:5px;background:rgba(7,9,28,.62);
+    cursor:pointer;position:relative;transition:background .15s ease, border-color .15s ease}
+  .consent input:checked{background:var(--royal-gold);border-color:var(--royal-gold)}
+  .consent input:checked::after{content:'';position:absolute;left:6px;top:2px;width:5px;height:10px;
+    border:solid var(--brand-black);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+  .consent input:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+  .consent label{font-size:13.5px;font-weight:400;color:rgba(244,241,235,.72);
+    margin:0;cursor:pointer;letter-spacing:0}
+
+  button{width:100%;font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:.02em;
+    color:var(--brand-black);background:linear-gradient(180deg, var(--gold-bright), var(--royal-gold));
+    border:none;border-radius:10px;padding:16px;cursor:pointer;margin-top:16px;
+    transition:filter .18s ease, transform .12s ease}
+  button:hover:not(:disabled){filter:brightness(1.08)}
+  button:active:not(:disabled){transform:translateY(1px)}
+  button:disabled{opacity:.55;cursor:not-allowed}
+  button:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+
+  .below{font-size:12.5px;color:rgba(244,241,235,.44);text-align:center;margin-top:16px}
+  .formerr{display:none;font-size:14px;color:#F0A49C;text-align:center;margin-top:16px;padding:12px;
+    background:rgba(224,115,106,.09);border:1px solid rgba(224,115,106,.28);border-radius:9px}
+  .formerr.show{display:block}
+
+  /* ---------- step 2 ---------- */
+  #step2{display:none}
+  #step2.show{display:block}
+
+  .gotit{text-align:center;margin-bottom:26px}
+  .gotit h2{font-family:var(--serif);font-size:32px;font-weight:500;color:#fff;margin-bottom:12px}
+  .gotit p{font-size:15.5px;color:rgba(244,241,235,.76);max-width:480px;margin:0 auto}
+
+  .asks{margin:0 0 22px}
+  .ask{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 0;border-top:1px solid rgba(201,163,71,.14);
+  }
+  .ask:last-child{border-bottom:1px solid rgba(201,163,71,.14)}
+  .num{
+    flex:0 0 auto;width:28px;height:28px;border-radius:50%;
+    border:1px solid rgba(201,163,71,.45);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:15px;color:var(--royal-gold);margin-top:1px;
+  }
+  .ask h3{font-size:15px;font-weight:600;color:var(--gold-pale);margin-bottom:4px}
+  .ask p{font-size:13.5px;color:rgba(244,241,235,.6);line-height:1.55}
+
+  .permission{
+    margin:22px 0 6px;padding:18px 20px;border-radius:12px;
+    background:rgba(7,9,28,.55);border:1px solid rgba(201,163,71,.24);
+    font-size:13.5px;color:rgba(244,241,235,.72);line-height:1.6;
+  }
+  .permission strong{color:var(--gold-pale);font-weight:600;display:block;margin-bottom:7px}
+
+  .keeps{
+    margin-top:18px;padding:16px 18px;border-radius:11px;
+    background:rgba(7,9,28,.5);border:1px solid rgba(201,163,71,.16);
+    font-size:12.5px;color:rgba(244,241,235,.56);line-height:1.55;
+  }
+  .keeps strong{color:rgba(245,228,168,.85);font-weight:600}
+
+  /* ---------- done ---------- */
+  #done{display:none;text-align:center;padding:14px 4px}
+  #done.show{display:block}
+  .check{width:60px;height:60px;margin:0 auto 24px;border-radius:50%;
+    border:1.5px solid var(--royal-gold);display:flex;align-items:center;justify-content:center}
+  .check::after{content:'';width:15px;height:27px;border:solid var(--royal-gold);
+    border-width:0 2px 2px 0;transform:rotate(45deg) translate(-2px,-3px)}
+  #done h2{font-family:var(--serif);font-size:34px;font-weight:500;color:#fff;margin-bottom:16px}
+  #done p{font-size:16px;color:rgba(244,241,235,.78);max-width:450px;margin:0 auto 14px}
+  #done .small{font-size:14px;color:rgba(244,241,235,.5)}
+
+  footer{text-align:center;margin-top:28px;font-size:12px;color:rgba(244,241,235,.34);letter-spacing:.05em}
+
+  @media (max-width:560px){
+    .card{padding:28px 22px 26px;border-radius:14px}
+    body{padding:24px 14px 48px}
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <div id="intro">
+    <p class="eyebrow">AI Avatar Creations</p>
+    <h1>Get your <span class="gold">DEMO</span></h1>
+    <p class="lede">
+      Paste a passage of your own teaching, send me one photo and one short voice note,
+      and within a few days you get that passage back as a video, in your own face and your own voice,
+      with nothing filmed.
+    </p>
+    <p class="honesty">
+      One demo per person, up to 30 seconds, no revisions. Your video arrives as a file you keep,
+      and one day later your photo, your voice and everything built from them are deleted from my side.
+    </p>
+  </div>
+
+  <div class="card">
+
+    <div class="steps" id="steps">
+      <span class="dot on" id="d1"></span>
+      <span class="dot" id="d2"></span>
+      <span class="steplabel" id="steplabel">Step 1 of 2</span>
+    </div>
+
+    <!-- ================= STEP 1 ================= -->
+    <form id="gate" novalidate>
+
+      <div class="field">
+        <label for="name">Your name <span class="req">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="First and last" required>
+        <p class="err" id="err-name">Please add your name.</p>
+      </div>
+
+      <div class="field">
+        <label for="email">Email <span class="req">*</span></label>
+        <p class="hint">Where the video lands, and where I write to you from.</p>
+        <input type="email" id="email" name="email" autocomplete="email"
+               inputmode="email" placeholder="you@yourdomain.com" required>
+        <p class="err" id="err-email">Please add an email address that works.</p>
+      </div>
+
+      <div class="field">
+        <label for="teaches">What you teach <span class="req">*</span></label>
+        <p class="hint">One or two sentences. The subject, and who you teach it to.</p>
+        <textarea id="teaches" name="teaches" rows="3"
+          placeholder="Example: I teach mid-career women how to rebuild confidence after a layoff, through a 6-week group program."
+          required maxlength="600"></textarea>
+        <p class="err" id="err-teaches">A sentence or two is enough, and it is what places your demo.</p>
+      </div>
+
+      <div class="field">
+        <label for="script">The words you want to hear <span class="req">*</span></label>
+        <p class="hint">
+          Paste about 75 words of your own teaching, and that is exactly what you will hear yourself say.
+          An excerpt from a post, a paragraph from your course, an answer you give clients all the time.
+        </p>
+        <textarea id="script" name="script" rows="6" placeholder="Paste your passage here."
+                  required maxlength="700"></textarea>
+        <div class="meter" id="meter">
+          <div class="track"><div class="fill" id="fill"></div></div>
+          <span class="count" id="count">0 of about 75 words</span>
+        </div>
+        <p class="err" id="err-script">Please paste at least 15 words, so there is something to speak.</p>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">
+          Write to me at this address with my demo video and the guide. No newsletter, nothing I did not ask for.
+        </label>
+      </div>
+      <p class="err" id="err-consent" style="margin-bottom:6px">
+        This one is needed, because everything happens by email.
+      </p>
+
+      <button type="submit" id="submit">Continue</button>
+      <p class="below">Four fields. One more screen.</p>
+      <p class="formerr" id="formerr"></p>
+
+      <div style="position:absolute;left:-9999px" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+    </form>
+
+    <!-- ================= STEP 2 ================= -->
+    <div id="step2">
+
+      <div class="gotit">
+        <h2>Got it, <span id="fname">there</span>.</h2>
+        <p>An email from me is on its way, and it asks for two things. You reply to it with both attached.</p>
+      </div>
+
+      <div class="asks">
+        <div class="ask">
+          <span class="num">1</span>
+          <div>
+            <h3>One photo of you</h3>
+            <p>Facing the camera, good light, nothing across your face. A recent headshot works,
+               and so does a selfie taken next to a window.</p>
+          </div>
+        </div>
+        <div class="ask">
+          <span class="num">2</span>
+          <div>
+            <h3>One voice note, about 30 seconds</h3>
+            <p>You, reading out loud the passage you just pasted. This recording becomes the sound of
+               the video, so find a quiet room and read it the way you would say it to a client rather
+               than the way you would read a page. Your phone's recorder is fine, and the passage will
+               be in the email so you can read it from there.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="permission">
+        <strong>What replying to that email means</strong>
+        Sending me the photo and the recording is how you give AI Avatar Creations permission to build
+        a one-time AI avatar from your photo, and to use your recording as the sound of that video,
+        for the single purpose of making this demo. Your voice is not copied or recreated, it is your
+        own recording playing. Nothing gets built before your reply arrives, and nothing survives the
+        day after it is delivered.
+      </div>
+
+      <div class="consent tight">
+        <input type="checkbox" id="likeness" required>
+        <label for="likeness">
+          I understand this, and the photo and recording I send will be mine to share.
+        </label>
+      </div>
+      <p class="err" id="err-likeness">This one is needed before anything gets built.</p>
+
+      <div class="keeps">
+        <strong>What happens to them.</strong>
+        The avatar is built inside my own account and stays there, so the demo is mine to make and not
+        yours to repeat. Your video comes to you as a file you keep, and one day after it reaches you
+        all of it is deleted from my side: your photo, your recording, the avatar, and my own copy of
+        the video. What I keep is a line in my records saying you sent them and when, which is the only
+        way I can show the permission was real.
+      </div>
+
+      <button type="button" id="agree">Watch for my email</button>
+    </div>
+
+    <!-- ================= DONE ================= -->
+    <div id="done">
+      <div class="check"></div>
+      <h2>That is everything.</h2>
+      <p>Check your inbox in the next few minutes, and reply with the photo and the recording.</p>
+      <p class="small">Your demo goes out within a few days of your reply, with the guide attached.</p>
+    </div>
+
+  </div>
+
+  <footer>aiavatarcreation.pro</footer>
+
+</main>
+
+<script>
+/* ==================================================================
+   CONFIGURE ME
+
+   ENDPOINT receives a plain JSON POST. Leave empty for DEMO_MODE:
+   the form validates, walks both steps, logs the payload to the
+   browser console, and sends nothing.
+
+   Recommended: an n8n Webhook node (POST) on your own host, then
+     - Airtable "Create record"
+     - Send email: the media request, with the permission text and
+       the prospect's own passage quoted back (see the spec)
+
+   'https://<your-n8n-host>/webhook/demo-gate'
+
+   Serve this page from aiavatarcreation.pro so the POST is
+   same-origin and no CORS preflight is involved.
+
+   Do not call the Airtable API directly from this page. The key
+   would sit in public source. Route through n8n.
+
+   VERIFY BEFORE LAUNCH: one real submission, end to end, with your
+   own address. Confirm the record lands and the email arrives.
+   ================================================================== */
+const ENDPOINT = 'https://aimastery333.app.n8n.cloud/webhook/demo-gate';
+
+const TARGET_WORDS = 75, MIN_WORDS = 15, MAX_WORDS = 95;
+
+const $ = id => document.getElementById(id);
+const words = s => s.trim() ? s.trim().split(/\s+/).length : 0;
+
+const script = $('script'), meter = $('meter'), fill = $('fill'), count = $('count');
+
+function updateMeter(){
+  const n = words(script.value);
+  fill.style.width = Math.min(100, (n / TARGET_WORDS) * 100) + '%';
+  meter.classList.toggle('good', n >= MIN_WORDS && n <= MAX_WORDS);
+  meter.classList.toggle('over', n > MAX_WORDS);
+  count.textContent = n > MAX_WORDS
+    ? n + ' words, a little long for 30 seconds'
+    : n + ' of about ' + TARGET_WORDS + ' words';
+}
+script.addEventListener('input', updateMeter); updateMeter();
+
+const RULES = {
+  name:    v => v.trim().length >= 2,
+  email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+  teaches: v => v.trim().length >= 10,
+  script:  v => words(v) >= MIN_WORDS
+};
+
+function setErr(id, bad){
+  const el = $(id), err = $('err-' + id);
+  if (el) el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+  if (err) err.classList.toggle('show', bad);
+}
+
+Object.keys(RULES).forEach(id => {
+  $(id).addEventListener('input', () => { if (RULES[id]($(id).value)) setErr(id, false); });
+});
+$('consent').addEventListener('change', e => { if (e.target.checked) $('err-consent').classList.remove('show'); });
+$('likeness').addEventListener('change', e => { if (e.target.checked) $('err-likeness').classList.remove('show'); });
+
+let pending = null;
+
+$('gate').addEventListener('submit', e => {
+  e.preventDefault();
+  $('formerr').classList.remove('show');
+
+  let firstBad = null;
+  Object.keys(RULES).forEach(id => {
+    const bad = !RULES[id]($(id).value);
+    setErr(id, bad);
+    if (bad && !firstBad) firstBad = $(id);
+  });
+  const consentBad = !$('consent').checked;
+  $('err-consent').classList.toggle('show', consentBad);
+  if (consentBad && !firstBad) firstBad = $('consent');
+  if (firstBad){ firstBad.focus(); return; }
+
+  if ($('company').value.trim() !== ''){ toStep2(); return; }
+
+  pending = {
+    name: $('name').value.trim(),
+    email: $('email').value.trim(),
+    teaches: $('teaches').value.trim(),
+    script: script.value.trim(),
+    scriptWords: words(script.value),
+    emailConsent: true,
+    source: new URLSearchParams(location.search).get('src') || 'website',
+    submitted: new Date().toISOString()
+  };
+
+  toStep2();
+});
+
+function toStep2(){
+  const first = $('name').value.trim().split(/\s+/)[0];
+  if (first) $('fname').textContent = first;
+  $('gate').style.display = 'none';
+  $('intro').style.display = 'none';
+  $('step2').classList.add('show');
+  $('d2').classList.add('on');
+  $('steplabel').textContent = 'Step 2 of 2';
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+/* The record is written only once the permission is acknowledged,
+   so nothing enters the pipeline without it. */
+$('agree').addEventListener('click', async () => {
+  if (!$('likeness').checked){
+    $('err-likeness').classList.add('show');
+    $('likeness').focus();
+    return;
+  }
+  $('err-likeness').classList.remove('show');
+
+  const btn = $('agree');
+  btn.disabled = true; btn.textContent = 'Saving';
+
+  const payload = Object.assign({}, pending || {}, {
+    likenessAcknowledged: true,
+    likenessAt: new Date().toISOString()
+  });
+
+  if (!ENDPOINT){
+    console.log('DEMO_MODE, nothing sent. Payload:', payload);
+    setTimeout(finish, 400);
+    return;
+  }
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    finish();
+  } catch (err){
+    console.error(err);
+    btn.disabled = false; btn.textContent = 'Watch for my email';
+    const box = $('formerr');
+    box.textContent = 'That did not go through. Try once more, or email hello@aiavatarcreation.pro and I will take it from there.';
+    box.classList.add('show');
+    $('step2').appendChild(box);
+  }
+});
+
+function finish(){
+  $('step2').classList.remove('show');
+  $('steps').style.display = 'none';
+  $('done').classList.add('show');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+</script>
+
+</body>
+</html>
