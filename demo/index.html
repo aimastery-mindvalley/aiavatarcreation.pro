@@ -10,16 +10,17 @@
 <!--
   ==================================================================
   DEMO GATE  ·  AI Avatar Creations
-  v4 · 2026-07-25
+  v5 · 2026-07-29
 
-  CHANGE FROM v3: the photo and the voice note are no longer
-  uploaded here. They come back as a REPLY to the confirmation
-  email, and that reply is the consent record: sent from the
-  prospect's own address, carrying her own attachments, against
-  the permission text quoted in the email.
+  CHANGE FROM v4: the photo and the voice note are uploaded ON THE
+  PAGE again (Cosmina's ruling 2026-07-29, final). They travel as
+  base64 in the JSON POST and n8n stores them as Airtable
+  attachments. The permission acknowledgement on this page, with
+  its timestamp, is the consent record. Email 1 is a confirmation,
+  not a request.
 
   Step 1 (4 fields): name, email, what you teach, the passage.
-  Step 2 (agreement): explains the email, records the permission.
+  Step 2 (uploads + agreement): photo, voice note, permission.
 
   One endpoint to configure: ENDPOINT, near the bottom.
   Leave it empty to run in DEMO_MODE (logs, sends nothing).
@@ -175,6 +176,15 @@
   }
   .keeps strong{color:rgba(245,228,168,.85);font-weight:600}
 
+  .upl{
+    display:inline-block;width:auto;margin-top:12px;padding:10px 18px;
+    font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--gold-pale);
+    background:rgba(7,9,28,.62);border:1px dashed rgba(201,163,71,.5);border-radius:9px;
+    cursor:pointer;transition:border-color .18s ease, background .18s ease, color .18s ease;
+  }
+  .upl:hover{border-color:var(--royal-gold);background:rgba(7,9,28,.85)}
+  .upl.done{border-style:solid;border-color:var(--royal-gold);color:var(--gold-bright)}
+
   /* ---------- done ---------- */
   #done{display:none;text-align:center;padding:14px 4px}
   #done.show{display:block}
@@ -202,7 +212,7 @@
     <p class="eyebrow">AI Avatar Creations</p>
     <h1>Get your <span class="gold">DEMO</span></h1>
     <p class="lede">
-      Paste a passage of your own teaching, send me one photo and one short voice note,
+      Paste a passage of your own teaching, add one photo and one short voice note,
       and within a few days you get that passage back as a video, in your own face and your own voice,
       with nothing filmed.
     </p>
@@ -286,37 +296,43 @@
 
       <div class="gotit">
         <h2>Got it, <span id="fname">there</span>.</h2>
-        <p>An email from me is on its way, and it asks for two things. You reply to it with both attached.</p>
+        <p>Two things to add, and everything is done. Both stay on this page, nothing to email back.</p>
       </div>
 
       <div class="asks">
         <div class="ask">
           <span class="num">1</span>
-          <div>
+          <div style="flex:1">
             <h3>One photo of you</h3>
             <p>Facing the camera, good light, nothing across your face. A recent headshot works,
                and so does a selfie taken next to a window.</p>
+            <label class="upl" id="photo-label" for="photo">Choose your photo</label>
+            <input type="file" id="photo" accept="image/*" style="display:none">
+            <p class="err" id="err-photo">Please add a photo, or pick a smaller one (under 4.5 MB).</p>
           </div>
         </div>
         <div class="ask">
           <span class="num">2</span>
-          <div>
+          <div style="flex:1">
             <h3>One voice note, about 30 seconds</h3>
             <p>You, reading out loud the passage you just pasted. This recording becomes the sound of
                the video, so find a quiet room and read it the way you would say it to a client rather
-               than the way you would read a page. Your phone's recorder is fine, and the passage will
-               be in the email so you can read it from there.</p>
+               than the way you would read a page. Record it with your phone's voice recorder, then
+               pick the file here.</p>
+            <label class="upl" id="voice-label" for="voice">Choose your voice note</label>
+            <input type="file" id="voice" accept="audio/*,.m4a,.mp3,.aac,.wav,.ogg" style="display:none">
+            <p class="err" id="err-voice">Please add a voice note, up to 6 MB (about 30 seconds is perfect).</p>
           </div>
         </div>
       </div>
 
       <div class="permission">
-        <strong>What replying to that email means</strong>
-        Sending me the photo and the recording is how you give AI Avatar Creations permission to build
+        <strong>What uploading these means</strong>
+        Uploading the photo and the recording is how you give AI Avatar Creations permission to build
         a one-time AI avatar from your photo, and to use your recording as the sound of that video,
         for the single purpose of making this demo. Your voice is not copied or recreated, it is your
-        own recording playing. Nothing gets built before your reply arrives, and nothing survives the
-        day after it is delivered.
+        own recording playing. Nothing gets built before you press the button below, and nothing
+        survives the day after your video is delivered.
       </div>
 
       <div class="consent tight">
@@ -336,15 +352,15 @@
         way I can show the permission was real.
       </div>
 
-      <button type="button" id="agree">Watch for my email</button>
+      <button type="button" id="agree">Send everything</button>
     </div>
 
     <!-- ================= DONE ================= -->
     <div id="done">
       <div class="check"></div>
       <h2>That is everything.</h2>
-      <p>Check your inbox in the next few minutes, and reply with the photo and the recording.</p>
-      <p class="small">Your demo goes out within a few days of your reply, with the guide attached.</p>
+      <p>Your passage, your photo and your recording are in. A confirmation email is on its way.</p>
+      <p class="small">Your demo lands in your inbox within a few days, with the guide attached.</p>
     </div>
 
   </div>
@@ -357,25 +373,19 @@
 /* ==================================================================
    CONFIGURE ME
 
-   ENDPOINT receives a plain JSON POST. Leave empty for DEMO_MODE:
-   the form validates, walks both steps, logs the payload to the
-   browser console, and sends nothing.
+   ENDPOINT receives a plain JSON POST (with base64 photo + voice).
+   Leave empty for DEMO_MODE: validates, walks both steps, logs the
+   payload, sends nothing.
 
-   Recommended: an n8n Webhook node (POST) on your own host, then
-     - Airtable "Create record"
-     - Send email: the media request, with the permission text and
-       the prospect's own passage quoted back (see the spec)
-
-   'https://<your-n8n-host>/webhook/demo-gate'
-
-   Serve this page from aiavatarcreation.pro so the POST is
-   same-origin and no CORS preflight is involved.
+   The n8n workflow behind it: Webhook (POST) -> create Airtable
+   record -> upload photo attachment -> upload voice attachment ->
+   confirmation email.
 
    Do not call the Airtable API directly from this page. The key
    would sit in public source. Route through n8n.
 
    VERIFY BEFORE LAUNCH: one real submission, end to end, with your
-   own address. Confirm the record lands and the email arrives.
+   own address. Confirm the record, both attachments, and the email.
    ================================================================== */
 const ENDPOINT = 'https://aimastery333.app.n8n.cloud/webhook/demo-gate';
 
@@ -415,6 +425,67 @@ Object.keys(RULES).forEach(id => {
 });
 $('consent').addEventListener('change', e => { if (e.target.checked) $('err-consent').classList.remove('show'); });
 $('likeness').addEventListener('change', e => { if (e.target.checked) $('err-likeness').classList.remove('show'); });
+
+/* ---------- uploads ---------- */
+const MAX_PHOTO = 4.5 * 1024 * 1024, MAX_VOICE = 6 * 1024 * 1024;
+let photoPayload = null, voicePayload = null;
+
+const toBase64 = blob => new Promise((res, rej) => {
+  const r = new FileReader();
+  r.onload = () => res(String(r.result).split(',')[1]);
+  r.onerror = rej;
+  r.readAsDataURL(blob);
+});
+
+async function compressPhoto(file){
+  try {
+    const bmp = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, Math.round(bmp.width * scale));
+    c.height = Math.max(1, Math.round(bmp.height * scale));
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.85));
+    if (blob && blob.size <= MAX_PHOTO)
+      return { blob, type: 'image/jpeg', name: (file.name || 'photo').replace(/\.[^.]+$/, '') + '.jpg' };
+  } catch (e) { /* fall through to the original file */ }
+  if (file.size <= MAX_PHOTO) return { blob: file, type: file.type || 'image/jpeg', name: file.name || 'photo.jpg' };
+  return null;
+}
+
+$('photo').addEventListener('change', async e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  $('photo-label').textContent = 'Preparing photo…';
+  const out = await compressPhoto(f);
+  if (!out){
+    photoPayload = null;
+    $('photo-label').textContent = 'Choose your photo';
+    $('err-photo').classList.add('show');
+    return;
+  }
+  photoPayload = { name: out.name, type: out.type, data: await toBase64(out.blob) };
+  $('err-photo').classList.remove('show');
+  $('photo-label').textContent = out.name + ' ✓';
+  $('photo-label').classList.add('done');
+});
+
+$('voice').addEventListener('change', async e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  if (f.size > MAX_VOICE){
+    voicePayload = null;
+    $('voice-label').textContent = 'Choose your voice note';
+    $('voice-label').classList.remove('done');
+    $('err-voice').classList.add('show');
+    return;
+  }
+  $('voice-label').textContent = 'Preparing recording…';
+  voicePayload = { name: f.name || 'voice-note.m4a', type: f.type || 'audio/m4a', data: await toBase64(f) };
+  $('err-voice').classList.remove('show');
+  $('voice-label').textContent = (f.name || 'voice note') + ' ✓';
+  $('voice-label').classList.add('done');
+});
 
 let pending = null;
 
@@ -463,19 +534,25 @@ function toStep2(){
 /* The record is written only once the permission is acknowledged,
    so nothing enters the pipeline without it. */
 $('agree').addEventListener('click', async () => {
+  let bad = false;
+  if (!photoPayload){ $('err-photo').classList.add('show'); bad = true; }
+  if (!voicePayload){ $('err-voice').classList.add('show'); bad = true; }
   if (!$('likeness').checked){
     $('err-likeness').classList.add('show');
-    $('likeness').focus();
-    return;
+    if (!bad) $('likeness').focus();
+    bad = true;
   }
+  if (bad) return;
   $('err-likeness').classList.remove('show');
 
   const btn = $('agree');
-  btn.disabled = true; btn.textContent = 'Saving';
+  btn.disabled = true; btn.textContent = 'Sending';
 
   const payload = Object.assign({}, pending || {}, {
     likenessAcknowledged: true,
-    likenessAt: new Date().toISOString()
+    likenessAt: new Date().toISOString(),
+    photo: photoPayload,
+    voice: voicePayload
   });
 
   if (!ENDPOINT){
@@ -494,7 +571,7 @@ $('agree').addEventListener('click', async () => {
     finish();
   } catch (err){
     console.error(err);
-    btn.disabled = false; btn.textContent = 'Watch for my email';
+    btn.disabled = false; btn.textContent = 'Send everything';
     const box = $('formerr');
     box.textContent = 'That did not go through. Try once more, or email hello@aiavatarcreation.pro and I will take it from there.';
     box.classList.add('show');
