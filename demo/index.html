@@ -9,25 +9,40 @@
 
 <!--
   ==================================================================
-  DEMO GATE  ·  AI Avatar Creations
-  v5 · 2026-07-29
+  AVATAR DEMO  ·  AI Avatar Creations
+  v6 · 2026-08-01
 
-  CHANGE FROM v4: the photo and the voice note are uploaded ON THE
-  PAGE again (Cosmina's ruling 2026-07-29, final). They travel as
-  base64 in the JSON POST and n8n stores them as Airtable
-  attachments. The permission acknowledgement on this page, with
-  its timestamp, is the consent record. Email 1 is a confirmation,
-  not a request.
+  ROUTING: this page is reached by the ManyChat keyword AVATAR.
+  The keyword DEMO goes to how-it-works.html, a different funnel.
+  The product is written "the Avatar Demo", never "the demo".
+
+  MEDIA: the photo and the voice note are uploaded ON THIS PAGE
+  (Cosmina's ruling 2026-07-29, final). They travel as base64 in
+  the JSON POST and n8n stores them as Airtable attachments.
+  Consent is the acknowledgement here plus the act of uploading,
+  timestamped in "Acknowledged at". The record that survives the
+  purge is the consent log line written into Airtable at deletion
+  time. Email 1 is a confirmation, not a request.
+
+  DELIVERY (ruling 2026-07-29, wording shipped 2026-08-01): the
+  finished video is revealed live on the discovery call and the
+  private link is handed over there. Email 2 carries the booking
+  link and the guide, never the video. No sentence on this page
+  may promise the video by email.
+
+  RETENTION: deleted on download confirmation, or seven days after
+  delivery, whichever comes first. Identical wording on this page,
+  in email 1 and in email 2.
 
   Step 1 (4 fields): name, email, what you teach, the passage.
   Step 2 (uploads + agreement): photo, voice note, permission.
 
-  One endpoint to configure: ENDPOINT, near the bottom.
-  Leave it empty to run in DEMO_MODE (logs, sends nothing).
+  One endpoint to configure: ENDPOINT, near the bottom. It is set
+  to the live n8n webhook. Leave it empty to run in DEMO_MODE
+  (logs, sends nothing).
 
-  GUIDE TITLE: the lead magnet is referred to as "Before You
-  Decide" throughout. If Cosmina picks a different title, it is
-  one find-and-replace here and in the spec.
+  GUIDE: the lead magnet is "The Honest Guide to AI Avatars",
+  title settled 2026-07-30. It is attached to email 2.
   ==================================================================
 -->
 
@@ -276,11 +291,11 @@
       <div class="consent">
         <input type="checkbox" id="consent" name="consent" required>
         <label for="consent">
-          Write to me at this address with my demo video and the guide. No newsletter, nothing I did not ask for.
+          Write to me at this address to book the call and send the guide. No newsletter, nothing I did not ask for.
         </label>
       </div>
       <p class="err" id="err-consent" style="margin-bottom:6px">
-        This one is needed, because everything happens by email.
+        This one is needed, because that is how I reach you.
       </p>
 
       <button type="submit" id="submit">Continue</button>
@@ -348,11 +363,12 @@
       <div class="keeps">
         <strong>What happens to them.</strong>
         The avatar is built inside my own account and stays there, so the demo is mine to make and not
-        yours to repeat. Your video comes to you as a private link where you watch it, comment, and
-        download your copy. As soon as you confirm the download (a comment on the video is enough),
-        and no later than seven days after delivery, all of it is deleted from my side: your photo,
-        your recording, the avatar, and the video. What I keep is a line in my records saying you sent
-        them and when, which is the only way I can show the permission was real.
+        yours to repeat. We watch the finished video together on a short call, and you get the private
+        link there to watch it again, comment, and download your copy. As soon as you confirm the
+        download (a comment on the video is enough), and no later than seven days after delivery, all
+        of it is deleted from my side: your photo, your recording, the avatar, and the video. What I
+        keep is a line in my records saying you sent them and when, which is the only way I can show
+        the permission was real.
       </div>
 
       <button type="button" id="agree">Send everything</button>
