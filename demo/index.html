@@ -72,11 +72,11 @@
     display:flex;align-items:center;justify-content:center;padding:40px 20px 64px;
   }
   body::before{
-    content:'';position:absolute;top:-140px;right:-140px;width:360px;height:360px;border-radius:50%;
+    content:'';position:absolute;bottom:-150px;right:-150px;width:380px;height:380px;border-radius:50%;
     background:var(--sun);box-shadow:0 40px 100px rgba(217,107,39,.3);z-index:0;
   }
   body::after{
-    content:'';position:absolute;bottom:-160px;left:-160px;width:320px;height:320px;border-radius:50%;
+    content:'';position:absolute;top:-160px;left:-160px;width:320px;height:320px;border-radius:50%;
     background:var(--champagne-deep);z-index:0;
   }
   .wrap{width:100%;max-width:620px;position:relative;z-index:1}
@@ -227,7 +227,7 @@
   @media (max-width:560px){
     .card{padding:28px 20px 26px;border-radius:22px}
     body{padding:28px 14px 48px}
-    body::before{width:170px;height:170px;top:-115px;right:-115px}
+    body::before{width:220px;height:220px;bottom:-110px;right:-110px}
   }
 </style>
 </head>
