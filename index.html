@@ -339,6 +339,29 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
 .month-week.handover .month-title { font-family: var(--f-serif); font-style: italic; font-weight: 400; font-size: 1.6rem; color: var(--mahogany); }
 .month-week.handover .month-desc { color: var(--mahogany); }
 
+/* ─── FOUNDER ─── */
+.founder { background: var(--ivory); border-top: 1px solid var(--line); }
+.founder-inner { display: grid; grid-template-columns: .82fr 1.18fr; gap: 4.5rem; align-items: center; }
+.founder-visual { position: relative; display: flex; flex-direction: column; align-items: center; }
+.founder-visual .sun-disc { width: 330px; aspect-ratio: 1; top: -26px; left: -40px; }
+.founder-photo { width: min(360px, 100%); transform: rotate(-2deg); }
+.founder-media { aspect-ratio: 4/5; }
+.founder-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.founder-visual .hand-note { margin-top: 1.1rem; transform: rotate(-3deg); position: relative; z-index: 3; }
+.founder-copy .section-eyebrow { margin-left: 0; }
+.founder-lead { font-family: var(--f-serif); font-style: italic; font-size: 1.4rem; line-height: 1.45; color: var(--mahogany); margin: .5rem 0 1rem; }
+.founder-copy .section-sub { max-width: none; }
+.founder-rules { list-style: none; margin: 1.75rem 0; display: grid; gap: .9rem; }
+.founder-rules li { display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: start; background: var(--champagne); border: 1px solid var(--line); border-radius: 20px; padding: 1.05rem 1.25rem; }
+.founder-rules i { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--f-serif); font-size: 1.15rem; background: var(--cognac); color: #fff; }
+.founder-rules li:nth-child(2) i { background: var(--gold); color: var(--mahogany); }
+.founder-rules h3 { font-family: var(--f-serif); font-style: italic; font-weight: 400; font-size: 1.3rem; color: var(--mahogany); line-height: 1.2; margin-bottom: .2rem; }
+.founder-rules p { font-size: .97rem; line-height: 1.65; color: var(--mahogany-soft); }
+.founder-close { font-size: 1.1rem; font-weight: 500; color: var(--mahogany); line-height: 1.6; }
+.founder-sign { display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.founder-sign .hand { font-size: 2.1rem; color: var(--bronze); }
+.founder-role { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--mahogany-soft); }
+
 /* ─── OFFERS ─── */
 .offers { background: var(--ivory); border-top: 1px solid var(--line); }
 .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; align-items: stretch; }
@@ -457,6 +480,9 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
   .demos-row, .offers-grid, .doors-grid, .questions-split { grid-template-columns: 1fr; }
   .offers-grid { gap: 2.5rem; }
   .final-inner { grid-template-columns: 1fr; text-align: center; }
+  .founder-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .founder-copy { text-align: left; }
+  .founder-visual .sun-disc { width: 260px; left: 50%; transform: translateX(-80%); }
   .final-copy { padding: 4.5rem 0 0; }
   .final-visual { height: 420px; }
   .final-visual .sun-disc { width: 320px; }
@@ -488,6 +514,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
   <div class="nav-links" id="navLinks">
     <a href="#demos">See It in Action</a>
     <a href="#month">How It Works</a>
+    <a href="#about">About</a>
     <a href="#offers">Offers</a>
     <a href="#questions">Questions</a>
     <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="nav-cta">Book a call</a>
@@ -691,6 +718,34 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
         <h3 class="month-title">The handover</h3>
         <p class="month-desc">You run the whole process yourself while I am there. You keep the system, the guide and twelve videos scheduled, three a week, for the month after.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOUNDER ═══════════ -->
+<section class="section founder reveal" id="about">
+  <div class="w founder-inner">
+    <div class="founder-visual">
+      <div class="sun-disc" aria-hidden="true"></div>
+      <div class="polaroid founder-photo">
+        <div class="polaroid-media founder-media">
+          <img src="images/founder-cosmina.jpg" alt="Cosmina Balu, founder of AI Avatar Creations" loading="lazy"/>
+        </div>
+      </div>
+      <div class="hand-note"><span class="hand">the woman behind Theia</span></div>
+    </div>
+    <div class="founder-copy">
+      <div class="section-eyebrow">About me &middot; The founder</div>
+      <h2 class="section-title">Three careers, <em>one system.</em></h2>
+      <p class="founder-lead">I taught primary school for nine years, and teaching was my main mission. Then I immigrated to Canada and rebuilt my life from zero.</p>
+      <p class="section-sub">For twenty years I worked in IT for banks and insurance companies, as a developer, a business analyst and a QA analyst, and then I became a certified coach. In 2024 I left corporate for AI. I built Theia, my own avatar, and the content system behind her, and I run everything I offer on my own brand first.</p>
+      <ul class="founder-rules">
+        <li><i>1</i><div><h3>The teacher</h3><p>A teacher has done her job the day you can do it alone, so I explain every step of your system until you run it without me.</p></div></li>
+        <li><i>2</i><div><h3>The tester</h3><p>A tester sees the defect that others let pass, so every avatar video is checked before it goes out: the stiff hand, the smile on the wrong word, the stare that holds too long.</p></div></li>
+        <li><i>3</i><div><h3>The coach</h3><p>A good coach works so that one day you do not need her, so I hand you the system in the first month.</p></div></li>
+      </ul>
+      <p class="founder-close">Your expertise goes on video, and you are the one who runs the system.</p>
+      <div class="founder-sign"><span class="hand">Cosmina Balu</span><span class="founder-role">Founder, AI Avatar Creations</span></div>
     </div>
   </div>
 </section>
