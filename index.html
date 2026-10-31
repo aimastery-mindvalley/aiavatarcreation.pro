@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AI Avatar Creations | Scale Your Presence Without Filming Yourself</title>
-<meta name="description" content="Done-for-you video content for busy professionals. From social media to corporate training. Ready to publish. No camera required."/>
+<title>AI Avatar Creations | A Month of Video Content Ahead, Without Filming</title>
+<meta name="description" content="I build your AI avatar and your content system with you, then teach you to run them, so a month of video content is ready ahead without filming yourself."/>
 <!-- Open Graph / Social Share -->
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.aiavatarcreation.pro/"/>
-<meta property="og:title" content="AI Avatar Creations | Scale Your Presence Without Filming Yourself"/>
-<meta property="og:description" content="Done-for-you video content for busy professionals. From social media to corporate training. Ready to publish. No camera required."/>
+<meta property="og:title" content="AI Avatar Creations | A Month of Video Content Ahead, Without Filming"/>
+<meta property="og:description" content="I build your AI avatar and your content system with you, then teach you to run them, so a month of video content is ready ahead without filming yourself."/>
 <meta property="og:image" content="https://www.aiavatarcreation.pro/assets/link-preview.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="AI Avatar Creations — Done-for-you AI video content"/>
+<meta property="og:image:alt" content="AI Avatar Creations, AI avatar video for established experts"/>
 <meta property="og:site_name" content="AI Avatar Creations"/>
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="AI Avatar Creations | Scale Your Presence Without Filming Yourself"/>
-<meta name="twitter:description" content="Done-for-you video content for busy professionals. From social media to corporate training. Ready to publish. No camera required."/>
+<meta name="twitter:title" content="AI Avatar Creations | A Month of Video Content Ahead, Without Filming"/>
+<meta name="twitter:description" content="I build your AI avatar and your content system with you, then teach you to run them, so a month of video content is ready ahead without filming yourself."/>
 <meta name="twitter:image" content="https://www.aiavatarcreation.pro/assets/link-preview.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -322,6 +322,67 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(10,11,24,.06); }
 .offer-list li svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: .2rem; }
 .offer-cta { text-align: center; }
 
+.offers-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.offer-card { display: flex; flex-direction: column; padding: 2.25rem 2rem; }
+.offer-card .offer-list { flex: 1; }
+.offer-card.featured { border-top-color: var(--gold); box-shadow: 0 8px 40px rgba(201,163,71,.12); }
+.offer-tag {
+  font-size: .66rem; letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 700; color: var(--gold); margin-bottom: .75rem;
+}
+
+/* ─── HERO ADDITIONS ─── */
+.hero-cta { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.hero-link {
+  font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600;
+  color: var(--navy-mid); border-bottom: 1px solid var(--gold); padding-bottom: .2rem;
+  transition: color .25s;
+}
+.hero-link:hover { color: var(--gold); }
+.hero-video-label {
+  position: absolute; top: .75rem; left: .75rem;
+  background: rgba(7,9,28,.7); backdrop-filter: blur(8px);
+  padding: .35rem .75rem; border-radius: 3px;
+  font-size: .56rem; letter-spacing: .12em; text-transform: uppercase;
+  color: #FFFFFF; font-weight: 600;
+}
+
+/* ─── PROOF LINE ─── */
+.proof-line {
+  margin: 2.25rem auto 0; max-width: 640px; text-align: center;
+  font-family: var(--f-elegant); font-size: 1.25rem; line-height: 1.55;
+  color: var(--navy-deep); font-style: italic;
+}
+.proof-line strong { color: var(--gold); font-weight: 600; font-style: normal; }
+
+/* ─── THE MONTH ─── */
+.month { background: var(--white); border-top: 1px solid var(--border); }
+.month-track {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+  margin-top: 2.5rem; position: relative;
+}
+.month-track::before {
+  content: ''; position: absolute; top: 1.05rem; left: 1.75rem; right: 1.75rem;
+  height: 1px; background: var(--border-gold);
+}
+.month-week {
+  position: relative; background: var(--bg); padding: 1.75rem 1.5rem;
+  border-top: 2px solid var(--border-gold); border-radius: 0 0 4px 4px;
+}
+.month-week.handover { background: var(--navy-deep); border-top-color: var(--gold); }
+.month-num {
+  display: inline-block; font-family: var(--f-display); font-size: .7rem;
+  letter-spacing: .15em; text-transform: uppercase; font-weight: 600;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.month-title {
+  font-family: var(--f-elegant); font-size: 1.4rem; font-weight: 500;
+  color: var(--navy-deep); line-height: 1.2; margin-bottom: .6rem;
+}
+.month-desc { font-size: .95rem; line-height: 1.7; color: var(--ink-mid); }
+.month-week.handover .month-title { color: #FFFFFF; }
+.month-week.handover .month-desc { color: #E8E8E8; }
+
 /* ─── QUESTIONS ─── */
 .questions { background: var(--navy-deep); padding: 3.5rem 0; }
 .questions .section-eyebrow { color: var(--gold); }
@@ -419,7 +480,9 @@ footer {
   .hero-content { order: 1; }
   .hero-video-wrap { order: 2; max-height: 400px; max-width: 280px; }
   .hero-sub { margin: 0 auto 2rem; }
-  .hero-cta { display: flex; justify-content: center; }
+  .hero-cta { justify-content: center; }
+  .month-track { grid-template-columns: 1fr 1fr; }
+  .month-track::before { display: none; }
   .hero-trust { justify-content: center; }
   .hero-eyebrow { justify-content: center; }
   .how-steps { grid-template-columns: 1fr 1fr; }
@@ -431,6 +494,8 @@ footer {
 }
 @media (max-width: 600px) {
   .how-steps { grid-template-columns: 1fr; }
+  .month-track { grid-template-columns: 1fr; }
+  .hero-trust { flex-wrap: wrap; gap: .75rem 1.25rem; }
   .hero h1 { font-size: 1.9rem; }
   nav { height: 64px; }
   .offer-card { padding: 2rem 1.5rem; }
@@ -450,6 +515,7 @@ footer {
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#demos">See It in Action</a>
+    <a href="#month">How It Works</a>
     <a href="#offers">Offers</a>
     <a href="#questions">Questions</a>
     <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="nav-cta">Book a Call</a>
@@ -463,35 +529,37 @@ footer {
 <section class="hero" id="hero">
   <div class="w">
     <div class="hero-inner">
-      <div class="hero-content reveal">
-        <div class="hero-eyebrow">Done-for-You Video Content</div>
-        <h1>Scale Your Presence <em>Without Filming Yourself</em></h1>
-        <p class="hero-sub">Consistent, professional video content delivered ready to publish. No camera. No editing. No stress. You focus on your work.</p>
+      <div class="hero-content">
+        <div class="hero-eyebrow">AI avatar video for established experts</div>
+        <h1>A month of video content ahead, <em>without filming yourself.</em></h1>
+        <p class="hero-sub">I build your AI avatar and your content system with you, then I teach you to run them. Your avatar does the on-camera part. So you approve the words and review the finished video, without recording yourself again for each post.</p>
         <div class="hero-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
             Book a Discovery Call
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
+          <a href="#month" class="hero-link">See how the month works</a>
         </div>
         <div class="hero-trust">
           <div class="hero-trust-item">
             <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            No filming required
+            Your own avatar and voice
           </div>
           <div class="hero-trust-item">
             <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Ready-to-publish delivery
+            You keep the system
           </div>
           <div class="hero-trust-item">
             <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Built for busy professionals
+            Always disclosed as an avatar
           </div>
         </div>
       </div>
-      <div class="hero-video-wrap reveal">
-        <video id="heroVideo" autoplay muted loop playsinline>
+      <div class="hero-video-wrap">
+        <video id="heroVideo" autoplay muted loop playsinline preload="metadata">
           <source src="videos/cosmina-demo.mp4" type="video/mp4"/>
         </video>
+        <div class="hero-video-label">AI avatar</div>
         <div class="hero-video-badge" id="heroSoundBadge" style="cursor:pointer">Click for sound</div>
       </div>
     </div>
@@ -509,9 +577,9 @@ footer {
       <div class="door-card">
         <div class="door-label">Door One / For Experts</div>
         <h3 class="door-heading">Scale your <em>presence.</em></h3>
-        <p class="door-body">For the coach, the naturopath, the consultant, the educator. The person whose knowledge is ready and whose calendar is not. We deliver consistent, publishable video content built inside your accounts, in your voice, on a rhythm you can keep.</p>
+        <p class="door-body">For the established expert whose offer already sells and whose calendar is already full. I build your avatar and your content system with you, inside your own accounts, and then I teach you to run it, so a month of video is always ready ahead.</p>
         <div class="door-line"></div>
-        <div class="door-quote">Your expertise is already valuable. Now it is visible.</div>
+        <div class="door-quote">An avatar cannot make you real, but it can make you visible.</div>
       </div>
       <div class="door-card">
         <div class="door-label">Door Two / For Organisations</div>
@@ -587,6 +655,40 @@ footer {
         </div>
       </div>
     </div>
+    <p class="proof-line">One client's avatar video reached <strong>2,052 views</strong>, 148 likes and 31 comments, her most-commented post, against about 1,136 views on her seven other posts.</p>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS: THE MONTH ═══════════ -->
+<section class="section month reveal" id="month">
+  <div class="w">
+    <div style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center">How It Works</div>
+      <h2 class="section-title">Four weeks, then <em>you run it.</em></h2>
+      <p class="section-sub" style="margin:0 auto">I work with one expert at a time, and I build your system with you, so at the end you run it without me.</p>
+    </div>
+    <div class="month-track">
+      <div class="month-week">
+        <div class="month-num">Week 1</div>
+        <h3 class="month-title">Your avatar and your brain</h3>
+        <p class="month-desc">In one working session of about four hours, we build your avatar, your voice and three looks. Then we write down who you help, what you believe and how you speak, so the scripts sound like you.</p>
+      </div>
+      <div class="month-week">
+        <div class="month-num">Week 2</div>
+        <h3 class="month-title">Your strategy and first scripts</h3>
+        <p class="month-desc">We plan what you will post and write the first three scripts together. I write the rest, and you approve them within two business days.</p>
+      </div>
+      <div class="month-week">
+        <div class="month-num">Week 3</div>
+        <h3 class="month-title">Your videos</h3>
+        <p class="month-desc">You generate each approved script in your own account, with the written guide. Then we review, edit, caption and schedule the videos together.</p>
+      </div>
+      <div class="month-week handover">
+        <div class="month-num">Week 4</div>
+        <h3 class="month-title">The handover</h3>
+        <p class="month-desc">You run the whole process yourself while I am there. You keep the system, the guide and twelve videos scheduled, three a week, for the month after.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -595,19 +697,40 @@ footer {
   <div class="w">
     <div style="text-align:center">
       <div class="section-eyebrow" style="justify-content:center">Choose Your Path</div>
-      <h2 class="section-title">Two ways to <em>work together</em></h2>
+      <h2 class="section-title">Three ways to <em>work together</em></h2>
     </div>
     <div class="offers-grid">
-      <!-- Path A -->
-      <div class="offer-card">
-        <h3>For Experts & Educators</h3>
-        <div class="offer-subtitle">Stay visible and consistent on social media without being on camera, scripting, or editing. You serve clients. We handle the content.</div>
+      <!-- Month-Ahead AIOS -->
+      <div class="offer-card featured">
+        <div class="offer-tag">For experts</div>
+        <h3>Month-Ahead AIOS</h3>
+        <div class="offer-subtitle">The avatar and the system that writes in your voice, built with you over four weeks, then handed over.</div>
         <div class="offer-divider"></div>
         <ul class="offer-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consistent video presence built around your brand</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Monthly content delivered ready to publish</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Scripts developed from your expertise</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your visibility runs while you focus on your work</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your positioning, your audience and your voice, written down for the system</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your avatar and your voice, included</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Twelve videos scripted, produced, captioned and scheduled with you</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>The system installed in your own Notion and Claude, with a written guide</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A handover session, and a check-in four to six weeks later</li>
+        </ul>
+        <div class="offer-cta">
+          <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
+            Book a Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Avatar Build -->
+      <div class="offer-card">
+        <div class="offer-tag">For experts</div>
+        <h3>Avatar Build</h3>
+        <div class="offer-subtitle">Your avatar and your voice, built with you in one live session of about four hours.</div>
+        <div class="offer-divider"></div>
+        <ul class="offer-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your avatar or AI twin, and your voice</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Three looks, with one video for each</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>You bring three scripts, and the videos come back raw for your edit</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything stays in your own accounts, in your name</li>
         </ul>
         <div class="offer-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
@@ -618,6 +741,7 @@ footer {
       </div>
       <!-- Path B -->
       <div class="offer-card">
+        <div class="offer-tag">For organisations</div>
         <h3>For Business & Industry</h3>
         <div class="offer-subtitle">Professional training, onboarding, and internal communication videos produced and delivered without pulling your team into a studio.</div>
         <div class="offer-divider"></div>
@@ -646,26 +770,26 @@ footer {
     <div class="questions-split">
       <!-- Experts & Educators -->
       <div class="q-column">
-        <div class="q-column-label">Experts & Educators</div>
+        <div class="q-column-label">Experts</div>
         <div class="q-item">
-          <div class="q-question">"Will it still feel authentic?"</div>
-          <div class="q-answer">Built around your brand, your message, and your style. The goal is to help your voice show up consistently, even on the weeks when life gets full.</div>
+          <div class="q-question">"Will people know it is an avatar?"</div>
+          <div class="q-answer">Yes, because we say so on every video. A good avatar, disclosed, does not cost you clients. What does damage is the hidden one.</div>
         </div>
         <div class="q-item">
-          <div class="q-question">"Will people think it is AI?"</div>
-          <div class="q-answer">Trust comes from clarity, consistency, and alignment. Not from how the video was made. Your audience stays connected to your message.</div>
+          <div class="q-question">"AI doesn't sound like me. I tried."</div>
+          <div class="q-answer">That happens when the AI was never trained on your material. We start with your posts, your articles and your messages, so the scripts sound like you.</div>
         </div>
         <div class="q-item">
-          <div class="q-question">"I am not tech-savvy."</div>
-          <div class="q-answer">That is why it is done for you. You receive finished videos, ready to publish, with no platforms to learn or software to manage.</div>
+          <div class="q-question">"I'm not technical."</div>
+          <div class="q-answer">You do not need to be during the build. You learn to run it at the end, with the written guide, and that is the point of the handover.</div>
         </div>
         <div class="q-item">
-          <div class="q-question">"How fast can I get started?"</div>
-          <div class="q-answer">Book a discovery call and we scope your project within the first session. From there, we move at the pace your brand needs.</div>
+          <div class="q-question">"I like being on camera."</div>
+          <div class="q-answer">Then the system still writes your scripts and you shoot them yourself. The avatar is the default, and it is never a requirement.</div>
         </div>
         <div class="q-item">
-          <div class="q-question">"Do I own what you create for me?"</div>
-          <div class="q-answer">Yes. The videos, the scripts, and the assets built around your brand are yours, fully and without ongoing licensing.</div>
+          <div class="q-question">"What happens when we stop working together?"</div>
+          <div class="q-answer">You keep the system. That is what you paid for.</div>
         </div>
       </div>
       <!-- Business & Industry -->
