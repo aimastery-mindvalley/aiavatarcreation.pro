@@ -552,8 +552,12 @@ $('gate').addEventListener('submit', e => {
 });
 
 function toStep2(){
-  const first = $('name').value.trim().split(/\s+/)[0];
-  if (first) $('fname').textContent = first;
+  // Greet by first name, with tidy capitals ("maria" or "MARIA" becomes "Maria").
+  const raw = ($('name').value.trim().split(/\s+/)[0] || '').replace(/[^\p{L}'-]/gu, '');
+  if (raw.length >= 2){
+    const flat = raw === raw.toLocaleLowerCase() || raw === raw.toLocaleUpperCase();
+    $('fname').textContent = flat ? raw.charAt(0).toLocaleUpperCase() + raw.slice(1).toLocaleLowerCase() : raw;
+  }
   $('gate').style.display = 'none';
   $('intro').style.display = 'none';
   $('step2').classList.add('show');
