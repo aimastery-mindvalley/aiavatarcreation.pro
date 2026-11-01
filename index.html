@@ -24,6 +24,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=La+Belle+Aurore&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
 <meta name="theme-color" content="#FDFBF7"/>
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png"/>
+<link rel="canonical" href="https://www.aiavatarcreation.pro/"/>
 <style>
 /* AI Avatar Creations, Light Haute Couture (Brand Book 2026)
    60 ivory, 30 champagne, 10 warm. One crimson, once. Never black. */
@@ -162,7 +165,7 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
 .hero-inner { display: grid; grid-template-columns: 1.08fr .92fr; gap: 3.5rem; align-items: center; }
 .hero-content { position: relative; z-index: 2; }
 .hero-eyebrow {
-  display: inline-flex; align-items: center; padding: .5rem 1.05rem; margin-bottom: clamp(1rem, 2.8svh, 1.75rem);
+  display: inline-flex; align-items: center; padding: .5rem 1.05rem; margin-bottom: clamp(.9rem, 2.3svh, 1.5rem);
   border: 1px solid var(--mahogany); border-radius: 999px;
   font-family: var(--f-mono); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
   font-weight: 600; color: var(--mahogany);
@@ -173,7 +176,7 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
 }
 .hero h1 .glow { font-size: 1.06em; display: inline; padding: 0 .2em; margin: 0 -.2em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .hero h1 .sparkle { width: .5em; height: .5em; margin-left: .1em; vertical-align: .55em; }
-.hero-sub { font-size: 1.08rem; line-height: 1.68; color: var(--mahogany-soft); max-width: 545px; margin-bottom: clamp(1.25rem, 3.2svh, 2rem); }
+.hero-sub { font-size: 1.08rem; line-height: 1.62; color: var(--mahogany-soft); max-width: 545px; margin-bottom: clamp(1rem, 2.6svh, 1.6rem); }
 .hero-cta { display: flex; align-items: center; gap: 1.25rem 1.5rem; flex-wrap: wrap; }
 .hero-note { display: inline-flex; align-items: center; gap: .35rem; color: var(--bronze); transition: color .25s; }
 .hero-note .hand { font-size: 1.6rem; color: inherit; }
@@ -251,7 +254,7 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
 .board-foot .ai-note { font-family: var(--f-mono); font-size: .52rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mahogany-soft); font-weight: 600; text-align: right; }
 @keyframes tileIn { to { opacity: 1; transform: none; } }
 
-.hero-dates { margin-top: clamp(.9rem, 2.4svh, 1.4rem); font-family: var(--f-serif); font-style: italic; font-size: 1.08rem; line-height: 1.5; color: var(--mahogany-soft); max-width: 545px; }
+.hero-dates { margin-top: clamp(.7rem, 1.8svh, 1.1rem); font-family: var(--f-serif); font-style: italic; font-size: 1.02rem; line-height: 1.5; color: var(--mahogany-soft); max-width: 560px; }
 .hero-dates b { font-family: var(--f-sans); font-style: normal; font-weight: 500; font-size: .92em; color: var(--cognac-deep); border-bottom: 1.5px solid var(--line); padding-bottom: .05em; }
 
 .player { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 1.5rem; }
@@ -272,6 +275,10 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
   .player-card { animation: none; }
 }
 
+.final-note { margin-top: 1.4rem; font-family: var(--f-serif); font-style: italic; font-size: 1.05rem; line-height: 1.55; color: var(--mahogany-soft); max-width: 460px; }
+.final-note b { font-family: var(--f-sans); font-style: normal; font-weight: 500; font-size: .92em; color: var(--cognac-deep); border-bottom: 1.5px solid var(--line); padding-bottom: .05em; }
+.offers-note { text-align: center; margin-top: 2.25rem; font-size: 1.6rem; color: var(--cognac-deep); }
+@media (max-width: 960px) { .final-note { margin-left: auto; margin-right: auto; } }
 /* ─── TICKER ─── */
 .ticker { background: var(--cognac); overflow: hidden; padding: 1.05rem 0; }
 .ticker-track { display: flex; width: max-content; animation: tick 42s linear infinite; }
@@ -635,7 +642,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
       <div class="hero-content">
         <div class="hero-eyebrow">AI avatar videos for busy experts</div>
         <h1>A month of video content <span class="circled">ahead<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M40 12C95 0 190 4 210 38C225 66 150 88 85 84C25 80 2 60 8 38C14 20 45 8 75 8"/></svg></span>, <span class="glow">without filming yourself.</span></h1>
-        <p class="hero-sub">I build your AI avatar and your AI content system with you, then I teach you to use them. The system knows your business, your clients and the way you speak, so it can write a full month of scripts that sound like you. Your avatar presents each script on video. You approve every video before it is published, and you never have to film.</p>
+        <p class="hero-sub">I build your AI avatar and your AI content system with you, then I teach you to use them. The system knows your business, your clients and the way you speak, so it writes a month of scripts that sound like you. Your avatar presents them on video, you approve each one before it is published, and you never have to film.</p>
         <div class="hero-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
             Book a Discovery Call
@@ -643,7 +650,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
           </a>
           <a href="#month" class="hero-note"><span class="hand">see how we build your month</span><svg viewBox="0 0 44 30" aria-hidden="true"><path d="M3 5c8 16 22 21 35 15"/><path d="M31 14l7 6-9 3"/></svg></a>
         </div>
-        <p class="hero-dates">Book this week: we start on <b id="hdStart">the next Monday</b>, and your <b id="hdMonth">first month</b> is already scheduled.</p>
+        <p class="hero-dates">Book this week: we start on <b id="hdStart">the next Monday</b>, and your <b id="hdMonth">first month</b> is already scheduled. The call is 30 minutes, free and online.</p>
       </div>
       <div class="hero-visual">
         <div class="sun-disc" aria-hidden="true"></div>
@@ -766,7 +773,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
       <div class="demos-label">Experts & Educators</div>
       <div class="demos-row">
         <div class="demo-card portrait" data-video="videos/iliana-demo.mp4">
-          <video muted loop playsinline preload="metadata">
+          <video muted loop playsinline preload="metadata" poster="images/poster-iliana-demo.jpg">
             <source src="videos/iliana-demo.mp4" type="video/mp4"/>
           </video>
           <div class="demo-card-overlay"></div>
@@ -778,7 +785,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
           </div>
         </div>
         <div class="demo-card portrait" data-video="videos/ai-bridge-demo.mp4">
-          <video muted loop playsinline preload="metadata">
+          <video muted loop playsinline preload="metadata" poster="images/poster-ai-bridge-demo.jpg">
             <source src="videos/ai-bridge-demo.mp4" type="video/mp4"/>
           </video>
           <div class="demo-card-overlay"></div>
@@ -797,7 +804,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
       <div class="demos-label">Business & Industry</div>
       <div class="demos-row">
         <div class="demo-card" data-video="videos/abc-demo.mp4">
-          <video muted loop playsinline preload="metadata">
+          <video muted loop playsinline preload="metadata" poster="images/poster-abc-demo.jpg">
             <source src="videos/abc-demo.mp4" type="video/mp4"/>
           </video>
           <div class="demo-card-overlay"></div>
@@ -809,7 +816,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
           </div>
         </div>
         <div class="demo-card" data-video="videos/oilgas-demo.mp4">
-          <video muted loop playsinline preload="metadata">
+          <video muted loop playsinline preload="metadata" poster="images/poster-oilgas-demo.jpg">
             <source src="videos/oilgas-demo.mp4" type="video/mp4"/>
           </video>
           <div class="demo-card-overlay"></div>
@@ -863,7 +870,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
       <div class="month-week">
         <div class="month-num"><i>03</i>Week 3</div>
         <h3 class="month-title">Your videos</h3>
-        <p class="month-desc">You make a video from each approved script, in your own account, following the written guide. Then we review, edit, caption and schedule the videos together.</p>
+        <p class="month-desc">You make a video from each approved script, in your own avatar account, following the written guide. Then we review, edit, caption and schedule the videos together.</p>
       </div>
       <div class="month-week handover">
         <div class="month-num"><i>04</i>Week 4</div>
@@ -915,7 +922,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
         <div class="offer-sticker" aria-hidden="true">4<br/>weeks</div>
         <div class="offer-tag">For experts</div>
         <h3>Month-Ahead AIOS</h3>
-        <div class="offer-subtitle">Four weeks together: we build your avatar and the AI content system that writes your scripts, and then I teach you to run it on your own. The system works <em>with your avatar</em>, or <em>with videos you film yourself</em>.</div>
+        <div class="offer-subtitle">Four weeks together: we build your avatar and the Content OS that writes your scripts, and then I teach you to run it on your own. The system works <em>with your avatar</em>, or <em>with videos you film yourself</em>.</div>
         <div class="offer-divider"></div>
         <ul class="offer-list">
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Who you help, what you offer and how you speak, written down so the scripts sound like you</li>
@@ -970,6 +977,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
         </div>
       </div>
     </div>
+    <p class="offers-note hand">book the call and we choose the path together, in thirty minutes</p>
   </div>
 </section>
 
@@ -997,6 +1005,14 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
         <div class="q-item">
           <div class="q-question">"I like being on camera."</div>
           <div class="q-answer">In that case, the system still writes your scripts, and you film the videos yourself. The avatar is the default, but it's never a requirement.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"How much of my time does it take?"</div>
+          <div class="q-answer">About four hours for the build session in week one. After that, a few hours a week to approve the scripts, make the videos and review them with me. Once you run it alone, you set the pace.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-question">"What do I need before we start?"</div>
+          <div class="q-answer">Paying clients, so the videos have something to sell. A few posts, articles or messages written in your own words. And four hours for the first session, where we build your avatar and your voice together.</div>
         </div>
         <div class="q-item">
           <div class="q-question">"What happens when we stop working together?"</div>
@@ -1040,6 +1056,7 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
         Book your discovery call
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
+      <p class="final-note">I work with one expert at a time. Next start: <b id="finalStart">the next Monday</b>. The call is 30 minutes, free and online.</p>
     </div>
     <div class="final-visual">
       <div class="sun-disc" aria-hidden="true"></div>
@@ -1117,6 +1134,7 @@ const boardMonthName = MONTHS[firstPost.getMonth()];
 document.getElementById('boardMonth').textContent = boardMonthName;
 document.getElementById('hdStart').textContent = short(buildStart);
 document.getElementById('hdMonth').textContent = boardMonthName;
+document.getElementById('finalStart').textContent = short(buildStart);
 const tiles = Array.from(document.querySelectorAll('#boardGrid .tile'));
 const tileDates = tiles.map((tile, i) => {
   const d = addDays(firstPost, Math.floor(i / 3) * 7 + [0, 2, 4][i % 3]);
@@ -1142,6 +1160,7 @@ const openTile = (i) => {
   playerVideo.muted = false;
   playerVideo.currentTime = 0;
   playerVideo.play().catch(() => {});
+  document.getElementById('playerClose').focus({ preventScroll: true });
 };
 const closePlayer = () => {
   playerVideo.pause();
