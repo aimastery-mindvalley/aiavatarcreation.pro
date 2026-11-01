@@ -171,7 +171,7 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
   font-family: var(--f-sans); font-weight: 300; font-size: clamp(2.6rem, 5.3vw, 4.55rem);
   line-height: 1.04; letter-spacing: -.035em; color: var(--mahogany); margin-bottom: 1.6rem;
 }
-.hero h1 .glow { font-size: 1.06em; display: inline; }
+.hero h1 .glow { font-size: 1.06em; display: inline; padding: 0 .2em; margin: 0 -.2em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .hero h1 .sparkle { width: .5em; height: .5em; margin-left: .1em; vertical-align: .55em; }
 .hero-sub { font-size: 1.08rem; line-height: 1.72; color: var(--mahogany-soft); max-width: 500px; margin-bottom: 2rem; }
 .hero-cta { display: flex; align-items: center; gap: 1.25rem 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
@@ -179,9 +179,18 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(110,78,60,.08); }
 .hero-note .hand { font-size: 1.6rem; color: inherit; }
 .hero-note svg { width: 44px; height: 30px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .hero-note:hover { color: var(--cognac); }
-.hero-trust { display: flex; gap: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); flex-wrap: wrap; }
-.hero-trust-item { display: flex; align-items: center; gap: .5rem; font-size: .9rem; color: var(--mahogany); font-weight: 500; }
-.hero-trust-item .sparkle { width: .85rem; height: .85rem; fill: var(--cognac); }
+.hero-trust {
+  display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 3.25rem;
+  margin-top: 3.25rem; padding-top: 1.75rem; border-top: 1px solid var(--line);
+}
+.hero-trust-item { display: flex; align-items: center; gap: .6rem; white-space: nowrap; font-size: .98rem; color: var(--mahogany); font-weight: 500; }
+.hero-trust-item .sparkle { width: .95rem; height: .95rem; fill: var(--cognac); flex: none; }
+@media (max-width: 760px) {
+  .hero-trust { flex-direction: column; gap: .85rem; margin-top: 2rem; }
+}
+@media (max-width: 480px) {
+  .hero-eyebrow { font-size: .62rem; letter-spacing: .12em; padding: .5rem .9rem; white-space: nowrap; }
+}
 
 .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 580px; }
 .sun-disc {
@@ -577,20 +586,6 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
           </a>
           <a href="#month" class="hero-note"><span class="hand">see how the month works</span><svg viewBox="0 0 44 30" aria-hidden="true"><path d="M3 5c8 16 22 21 35 15"/><path d="M31 14l7 6-9 3"/></svg></a>
         </div>
-        <div class="hero-trust">
-          <div class="hero-trust-item">
-            <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
-            Your own avatar and voice
-          </div>
-          <div class="hero-trust-item">
-            <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
-            You keep the system
-          </div>
-          <div class="hero-trust-item">
-            <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
-            Always disclosed as an avatar
-          </div>
-        </div>
       </div>
       <div class="hero-visual">
         <div class="sun-disc" aria-hidden="true"></div>
@@ -605,6 +600,20 @@ footer { background: var(--ivory); padding: 3rem 3rem 2.25rem; border-top: 1px s
           </div>
         </div>
         <div class="hand-note"><span class="hand">my avatar, Theia</span><svg viewBox="0 0 58 34" aria-hidden="true"><path d="M4 8c12 20 30 24 48 14"/><path d="M44 15l8 7-10 4"/></svg></div>
+      </div>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+        Your own avatar and voice
+      </div>
+      <div class="hero-trust-item">
+        <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+        You keep the system
+      </div>
+      <div class="hero-trust-item">
+        <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+        Always disclosed as an avatar
       </div>
     </div>
   </div>
