@@ -680,6 +680,22 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
   .offer-aside { padding: 2rem 1.6rem; }
   .brief { transform: rotate(1.5deg); }
 }
+/* ─── CONVERSION PASS ─── */
+.btn-primary.soft { background: var(--ivory); color: var(--mahogany); box-shadow: none; border: 1px solid var(--line); padding: .85rem 1.5rem; font-size: .95rem; }
+.btn-primary.soft:hover { background: var(--cognac); color: #fff; border-color: var(--cognac); box-shadow: 0 12px 30px rgba(217,107,39,.28); }
+.mid-cta { display: flex; flex-direction: column; align-items: center; gap: .55rem; margin-top: 2.75rem; text-align: center; }
+.mid-cta .hand { font-size: 1.7rem; color: var(--cognac-deep); transform: rotate(-2deg); }
+.q-item { padding: 0; }
+.q-item summary { list-style: none; cursor: pointer; padding: 1.15rem 2.4rem 1.15rem 0; position: relative; }
+.q-item summary::-webkit-details-marker { display: none; }
+.q-item summary::after { content: ""; position: absolute; right: .35rem; top: 50%; width: 10px; height: 10px; border-right: 1.5px solid var(--cognac); border-bottom: 1.5px solid var(--cognac); transform: translateY(-70%) rotate(45deg); transition: transform .3s var(--ease); }
+.q-item[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+.q-item summary:hover .q-question, .q-item[open] .q-question { color: var(--cognac-deep); }
+.q-item .q-question { margin-bottom: 0; transition: color .25s; }
+.q-item .q-answer { padding: 0 2.4rem 1.25rem 0; }
+.offers-guide { text-align: center; max-width: 640px; margin: 2.25rem auto 0; font-family: var(--f-serif); font-style: italic; font-size: 1.15rem; line-height: 1.55; color: var(--mahogany-soft); }
+.offers-guide b { font-style: normal; font-family: var(--f-sans); font-weight: 500; color: var(--mahogany); }
+.offers-grid.one { align-items: start; }
 </style>
 </head>
 <body>
@@ -711,7 +727,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
       <div class="hero-content" data-aud="experts">
         <div class="aud-switch hero-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true">For experts</button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
         <h1>A month of video content <span class="circled">ahead<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M40 12C95 0 190 4 210 38C225 66 150 88 85 84C25 80 2 60 8 38C14 20 45 8 75 8"/></svg></span>, <span class="glow">without filming yourself.</span></h1>
-        <p class="hero-sub">I build your AI avatar and your AI content system with you, then I teach you to use them. The system knows your business, your clients and the way you speak, so it writes a month of scripts that sound like you. Your avatar presents them on video, you approve each one before it is published, and you never have to film.</p>
+        <p class="hero-sub">I build your AI avatar and your Content OS with you, then I teach you to run them. The system writes a month of scripts in your voice, your avatar presents them on video, and you approve each one before it goes out.</p>
         <div class="hero-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
             Book a Discovery Call
@@ -753,7 +769,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
       <div class="hero-content" data-aud="organizations">
         <div class="aud-switch hero-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true">For experts</button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
         <h1>Your team's knowledge, <span class="circled">on video<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M40 12C95 0 190 4 210 38C225 66 150 88 85 84C25 80 2 60 8 38C14 20 45 8 75 8"/></svg></span>, <span class="glow">without a studio.</span></h1>
-        <p class="hero-sub">I take your technical documentation, manuals, procedures and training packages and turn them into training and onboarding videos. An AI avatar presenter delivers each one clearly and consistently, in the terms your teams already use and in the languages they speak. Your team signs off every script before production, and when the content changes, I update the video quickly, without re-shooting a full session.</p>
+        <p class="hero-sub">I turn your technical documentation, manuals, procedures and training packages into training and onboarding videos, delivered by an AI avatar presenter in the terms your teams already use. Your team signs off every script, and when the content changes I update the video without re-shooting a full session.</p>
         <div class="hero-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
             Book a Discovery Call
@@ -831,27 +847,26 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <div class="system-head">
       <div class="section-eyebrow">The AI content system</div>
       <h2 class="section-title">An AI assistant writes your scripts in your voice, <em>or you write your own.</em></h2>
-      <p class="section-sub">The system is your Content OS: a private workspace in Notion, a popular app for pages, lists and calendars, built around your content. It holds your brand compass (who you help, what you stand for, how you speak), a knowledge hub with your own posts, articles and offers, your content strategy, a library of scripts, and a planner with a date for every video.</p>
-      <p class="section-sub">An AI assistant, Claude or ChatGPT, whichever you already use, reads all of it before it writes your scripts. Everything is set up in your own accounts, so the system belongs to you and keeps working after we finish.</p>
+      <p class="section-sub">Your Content OS is a private workspace built around your business, and an AI assistant, Claude or ChatGPT, reads it before it writes a single script. It lives in your own accounts, so it belongs to you and keeps working after we finish.</p>
     </div>
     <div class="system-flow">
-      <div class="system-step"><i>1</i><h3>Your business, in your words</h3><p>Together we fill your brand compass and your knowledge hub: who you help, what you offer, what you believe, and the words you actually use. We add your best posts, your articles and the questions your clients ask, so the assistant writes from your own material instead of generic advice.</p></div>
+      <div class="system-step"><i>1</i><h3>Your business, in your words</h3><p>We write down who you help, what you offer and how you speak, and we add your best posts and the questions your clients ask.</p></div>
       <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>2</i><h3>The AI writes, or you do</h3><p>When you ask, the assistant reads everything we wrote down about your business and writes the scripts and captions for your month, about your expertise, in your own voice. If you prefer to write some scripts yourself, they go into the same plan.</p></div>
+      <div class="system-step"><i>2</i><h3>The AI writes, or you do</h3><p>The assistant reads all of it and writes a month of scripts in your voice. Scripts you write yourself go into the same plan.</p></div>
       <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>3</i><h3>You decide</h3><p>You read every script, and you fix or remove anything that does not sound like you. The approved scripts are ready to be turned into videos, and then scheduled in your content planner, so you can see what goes out and when.</p></div>
+      <div class="system-step"><i>3</i><h3>You decide</h3><p>You read every script and fix or remove anything that does not sound like you. Approved scripts go into your planner, each with a date.</p></div>
     </div>
     <p class="hand system-fork-label">then you choose how each video gets made</p>
     <div class="system-fork">
       <div class="fork-card avatar">
         <span class="fork-tag">With your avatar</span>
         <h3>Your avatar <em>presents it.</em></h3>
-        <p>Your AI avatar is a digital version of you, made from your photos and your voice. It delivers the script on video, in your voice, so you do not have to film.</p>
+        <p>Your AI avatar, made from your photos and your voice, delivers the script on video. You never have to film.</p>
       </div>
       <div class="fork-card">
         <span class="fork-tag">Without an avatar</span>
         <h3>You <em>film the video.</em></h3>
-        <p>You film the video yourself. The script is already written, and the month is already planned.</p>
+        <p>You film it yourself. The script is already written, and the month is already planned.</p>
       </div>
     </div>
   </div>
@@ -859,28 +874,27 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <div class="system-head">
       <div class="section-eyebrow">The process</div>
       <h2 class="section-title">From your documents to a finished video, <em>with your sign-off at every step.</em></h2>
-      <p class="section-sub">Your technical documentation, manuals, procedures and training packages are the source material. Following ADDIE, the standard instructional design model, I turn them into clear scripts with your subject matter experts, in your company's tone, and your approver signs each one off before production.</p>
-      <p class="section-sub">An AI avatar presenter delivers the content, with captions and your branding. The presenter can be modelled on your own subject matter expert, with their consent and always disclosed as an avatar, or chosen from ready-made presenters.</p>
-      <p class="section-sub">Nothing is published before your team approves it, and every video is delivered as a file you own: an MP4 for your intranet, your shared drive or your controlled document management system, or a SCORM package that uploads straight into your learning management system.</p>
+      <p class="section-sub">Your technical documentation, manuals, procedures and training packages are the source material. Following ADDIE, the standard instructional design model, I turn them into clear scripts with your subject matter experts, and your approver signs each one off before production.</p>
+      <p class="section-sub">Every video is delivered as a file you own: an MP4 for your intranet, shared drive or controlled document management system, or a SCORM package for your learning management system.</p>
     </div>
     <div class="system-flow">
-      <div class="system-step"><i>1</i><h3>Your knowledge, collected</h3><p>We pick the first module and gather the source: the manual, the deck, or a recorded conversation with the person who knows the procedure best. We write down your tone, your terms and who approves what.</p></div>
+      <div class="system-step"><i>1</i><h3>Your knowledge, collected</h3><p>We pick the first module and gather the source: the manual, the deck, or a conversation with the person who knows the procedure best.</p></div>
       <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>2</i><h3>The script, in your tone</h3><p>I write a script that says one thing clearly, in the words your teams already use. Your subject expert corrects it, your approver signs it off, and only then does it go into production.</p></div>
+      <div class="system-step"><i>2</i><h3>The script, in your tone</h3><p>I write a script that says one thing clearly, in the words your teams use. Your subject matter expert corrects it, and your approver signs it off.</p></div>
       <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>3</i><h3>The video, in every language</h3><p>An avatar presenter delivers the approved script on video, with captions and your branding. The same module is produced in the languages your teams speak, and your team reviews each version before release.</p></div>
+      <div class="system-step"><i>3</i><h3>The video, in every language</h3><p>An avatar presenter delivers the approved script, with captions and your branding, in the languages your teams speak.</p></div>
     </div>
     <p class="hand system-fork-label">then you choose who presents it</p>
     <div class="system-fork">
       <div class="fork-card avatar">
         <span class="fork-tag">Your own people</span>
-        <h3>A manager's avatar <em>presents it.</em></h3>
-        <p>An avatar of a real manager or trainer, made with their consent from their photos and voice, and disclosed as an avatar on every video. The face your team already knows, without booking their day for filming.</p>
+        <h3>Your expert's avatar <em>presents it.</em></h3>
+        <p>An avatar modelled on your own subject matter expert, made with their consent and disclosed on every video. The face your team already knows, without booking their day for filming.</p>
       </div>
       <div class="fork-card">
         <span class="fork-tag">A ready-made presenter</span>
         <h3>A professional presenter <em>delivers it.</em></h3>
-        <p>A ready-made avatar presenter, chosen to match your audience. Several presenters are available, so different departments and languages can each have their own.</p>
+        <p>A ready-made avatar presenter, chosen to match your audience, with several available for different departments and languages.</p>
       </div>
     </div>
   </div>
@@ -979,6 +993,8 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         </div>
       </div>
     </div>
+    <div class="mid-cta" data-aud="experts"><span class="hand">want videos like these?</span><a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary soft">Book a Discovery Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    <div class="mid-cta" data-aud="organizations"><span class="hand">want a module like this for your team?</span><a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary soft">Book a Discovery Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
@@ -1027,6 +1043,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         <p class="month-desc">You run the whole process yourself while I am there to help. You keep the system, the guide and twelve videos scheduled for the following month, three a week. From there, you can plan <em>as many months ahead</em> as you want.</p>
       </div>
     </div>
+    <div class="mid-cta" data-aud="experts"><span class="hand">ready to plan your month?</span><a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary soft">Book a Discovery Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
   <div class="w" data-aud="organizations">
     <div class="month-head">
@@ -1075,6 +1092,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         <p class="month-desc">With the first module approved, we plan the next ones at the pace your team can review. When a procedure changes, <em>we update the script and re-issue the video</em>, with no one back in front of a camera.</p>
       </div>
     </div>
+    <div class="mid-cta" data-aud="organizations"><span class="hand">ready to scope your first module?</span><a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary soft">Book a Discovery Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
@@ -1185,15 +1203,9 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         <div class="offer-tag">How teams usually start</div>
         <h3>One module first.</h3>
         <p>Most teams start with a single onboarding or safety video, three to five minutes long, and decide on the library after they have watched it with their own people.</p>
-        <ul class="aside-list">
-          <li><b>Formats</b><span>Onboarding, safety and compliance, procedures, product and systems training, internal announcements</span></li>
-          <li><b>Delivery</b><span>Video files with captions, ready for your learning platform, your intranet or a shared drive</span></li>
-          <li><b>Updates</b><span>When a procedure changes, the script is updated and the video re-issued, without a re-shoot</span></li>
-          <li><b>Disclosure</b><span>Every video says it is presented by an AI avatar, so your people always know</span></li>
-        </ul>
       </div>
     </div>
-    <p class="offers-note hand" data-aud="experts">book the call and we choose the path together, in forty-five minutes</p>
+    <p class="offers-guide" data-aud="experts">Not sure which one? <b>The Avatar Build</b> if you already have scripts and a plan. <b>The Month Ahead</b> if you want the whole system and a month of videos scheduled. Or book the call and we choose together.</p>
     <p class="offers-note hand" data-aud="organizations">bring one procedure or one deck to the call, and we scope the first module</p>
     <div class="crosslink" data-aud="experts"><p>Do you run a team instead? <button type="button" class="aud-link" data-aud-go="organizations">See the training videos for organizations</button></p></div>
     <div class="crosslink" data-aud="organizations"><p>Are you an independent expert? <button type="button" class="aud-link" data-aud-go="experts">See the Content OS and the avatar for experts</button></p></div>
@@ -1209,70 +1221,50 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
       <!-- Experts -->
       <div class="q-column" data-aud="experts">
         <div class="q-column-label">Experts</div>
-        <div class="q-item">
-          <div class="q-question">"Will people know it is an avatar?"</div>
+        <details class="q-item">
+          <summary><div class="q-question">"Will people know it is an avatar?"</div></summary>
           <div class="q-answer">Yes, because we say so on every video. When the avatar is clearly disclosed, your clients keep trusting you. Trust breaks only when an avatar is hidden.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"AI doesn't sound like me. I tried."</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"AI doesn't sound like me. I tried."</div></summary>
           <div class="q-answer">That happens when the AI was never trained on your material. We start with your posts, your articles and your messages, so the scripts sound like you. And you can always write a script yourself and make the video from it.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"I'm not technical."</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"I'm not technical."</div></summary>
           <div class="q-answer">You don't need to be. I handle the technical side during the build, and at the end you learn to run the system with a written guide. That's what the handover is for.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"I like being on camera."</div>
-          <div class="q-answer">In that case, the system still writes your scripts, and you film the videos yourself. The avatar is the default, but it's never a requirement.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"How much of my time does it take?"</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"How much of my time does it take?"</div></summary>
           <div class="q-answer">About four hours for the build session in week one. After that, a few hours a week to approve the scripts, make the videos and review them with me. Once you run it alone, you set the pace.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"What do I need before we start?"</div>
-          <div class="q-answer">Paying clients, so the videos have something to sell. A few posts, articles or messages written in your own words. And four hours for the first session, where we build your avatar and your voice together.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"What happens when we stop working together?"</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"What happens when we stop working together?"</div></summary>
           <div class="q-answer">You keep the system. That's what you paid for.</div>
-        </div>
+        </details>
       </div>
       <!-- Organizations -->
       <div class="q-column" data-aud="organizations">
         <div class="q-column-label">Organizations</div>
-        <div class="q-item">
-          <div class="q-question">"Do we need to film anyone?"</div>
+        <details class="q-item">
+          <summary><div class="q-question">"Do we need to film anyone?"</div></summary>
           <div class="q-answer">No. An AI avatar presenter delivers the script, so nobody books a studio or a filming day. If you want a manager's own avatar, we make it from their photos and voice, with their consent, in one short session.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"Can this reflect our company's tone and standards?"</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"Can this reflect our company's tone and standards?"</div></summary>
           <div class="q-answer">Yes. Every video matches your brand voice and your visual standards, and nothing is published until your team signs it off.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"How much input will our team need to provide?"</div>
-          <div class="q-answer">The first few weeks require the most input, because together we define your brand voice, who approves what, and the source material. After that, your team reviews the scripts and approves the final videos.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"Can you turn our existing documents or slide decks into videos?"</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"Can you turn our existing documents or slide decks into videos?"</div></summary>
           <div class="q-answer">Yes. Your manuals, procedures and training decks become the source material, and I write the scripts and produce the videos from the material you provide.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"Will this work for technical or industry-specific training?"</div>
-          <div class="q-answer">Yes, this is where it works best. Technical content, compliance modules and specialized training are easier to follow when the delivery is clear and consistent.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"Can we use multiple speakers or languages?"</div>
-          <div class="q-answer">Yes. You can use several avatar presenters and produce videos in multiple languages, with the same quality in every version.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"What happens when a procedure changes?"</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"What happens when a procedure changes?"</div></summary>
           <div class="q-answer">We change the script and re-issue the video. Nobody goes back in front of a camera, and the updated version replaces the old one in your library.</div>
-        </div>
-        <div class="q-item">
-          <div class="q-question">"Who owns the videos?"</div>
+        </details>
+        <details class="q-item">
+          <summary><div class="q-question">"Who owns the videos?"</div></summary>
           <div class="q-answer">You do. Every video is delivered as a file in your name, and the scripts stay with you, so the library keeps working whether or not we keep working together.</div>
-        </div>
+        </details>
       </div>
     </div>
   </div>
