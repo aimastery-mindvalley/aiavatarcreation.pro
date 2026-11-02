@@ -698,6 +698,61 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
 .offers-guide { text-align: center; max-width: 640px; margin: 2.25rem auto 0; font-family: var(--f-serif); font-style: italic; font-size: 1.15rem; line-height: 1.55; color: var(--mahogany-soft); }
 .offers-guide b { font-style: normal; font-family: var(--f-sans); font-weight: 500; color: var(--mahogany); }
 .offers-grid.one { align-items: start; }
+/* ─── BOOKING ROOM: the calendar opens on the page ─── */
+.book { position: fixed; inset: 0; z-index: 220; display: grid; place-items: center; padding: 1.25rem; }
+.book[hidden] { display: none; }
+.book-backdrop { position: absolute; inset: 0; background: rgba(253,251,247,.84); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.book-card {
+  position: relative; width: min(1080px, 100%); height: min(740px, calc(100dvh - 2.5rem));
+  display: grid; grid-template-columns: 340px 1fr; background: var(--ivory); border-radius: 22px; overflow: hidden;
+  box-shadow: var(--shadow), 0 0 0 1px var(--line); animation: bookIn .55s var(--ease);
+}
+@keyframes bookIn { from { opacity: 0; transform: translateY(22px) scale(.98); } }
+.book-side { position: relative; display: flex; flex-direction: column; background: var(--champagne); border-right: 1px solid var(--line); padding: 2rem 1.9rem 1.5rem; overflow: auto; scrollbar-width: thin; }
+.book-portrait { position: relative; height: 150px; margin: .2rem 0 1rem; display: flex; justify-content: center; align-items: flex-end; flex: none; }
+.book-portrait .sun-disc { width: 142px; aspect-ratio: 1; top: 0; left: 50%; transform: translateX(-50%); }
+.book-portrait img { position: relative; z-index: 2; height: 100%; width: auto; }
+.book-portrait .ai-label { left: 0; bottom: .3rem; }
+.book-kicker { font-family: var(--f-mono); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--cognac-deep); }
+.book-title { font-family: var(--f-sans); font-weight: 300; font-size: 1.95rem; line-height: 1.1; letter-spacing: -.03em; color: var(--mahogany); margin: .55rem 0 .9rem; }
+.book-title em { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--cognac); letter-spacing: -.01em; font-size: 1.04em; }
+.book-meta { display: flex; flex-wrap: wrap; gap: .4rem; }
+.book-meta span { font-family: var(--f-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--mahogany); background: var(--ivory); border: 1px solid var(--line); padding: .35rem .65rem; border-radius: 999px; }
+.book-steps { list-style: none; counter-reset: bs; margin: 1rem 0 0; display: grid; gap: .75rem; }
+.book-steps li { counter-increment: bs; position: relative; padding-left: 2.1rem; font-size: .93rem; line-height: 1.5; color: var(--mahogany-soft); }
+.book-steps li::before { content: counter(bs); position: absolute; left: 0; top: -.05rem; width: 1.45rem; height: 1.45rem; border-radius: 50%; display: grid; place-items: center; background: var(--cognac); color: #fff; font-family: var(--f-mono); font-size: .66rem; font-weight: 600; }
+.book-steps-label { margin-top: 1.3rem; }
+.book-note { margin-top: auto; padding-top: 1.3rem; font-family: var(--f-serif); font-style: italic; font-size: 1rem; line-height: 1.5; color: var(--mahogany-soft); }
+.book-note b { font-family: var(--f-sans); font-style: normal; font-weight: 500; font-size: .92em; color: var(--cognac-deep); }
+.book-tab { display: inline-block; margin-top: .9rem; font-size: .8rem; color: var(--bronze); border-bottom: 1px solid var(--line); align-self: flex-start; }
+.book-tab:hover { color: var(--cognac); }
+.book-done { display: none; }
+.book.done .book-done { display: block; }
+.book.done .book-steps, .book.done .book-steps-label, .book.done .book-before { display: none; }
+.book-done p { font-size: .95rem; line-height: 1.55; color: var(--mahogany-soft); margin-top: 1rem; }
+.book-main { position: relative; background: var(--ivory); }
+.book-cal { position: absolute; inset: 0; }
+.book-cal iframe { width: 100%; height: 100%; border: 0; display: block; }
+.book-loading { position: absolute; inset: 0; display: none; place-items: center; text-align: center; }
+.book.loading .book-loading { display: grid; }
+.book-loading .hand { font-size: 1.7rem; animation: bookPulse 1.6s ease-in-out infinite; }
+@keyframes bookPulse { 50% { opacity: .35; } }
+.book-failed { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 2rem; }
+.book.failed .book-failed { display: grid; }
+.book.failed .book-loading { display: none; }
+.book-failed p { font-family: var(--f-serif); font-style: italic; font-size: 1.1rem; color: var(--mahogany-soft); margin-bottom: 1.2rem; }
+.book-close { position: absolute; left: 1rem; top: 1rem; z-index: 5; cursor: pointer; border: none; font-family: var(--f-mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #fff; background: var(--cognac); padding: .45rem .8rem; border-radius: 999px; }
+.book-close:hover { background: var(--cognac-deep); }
+@media (prefers-reduced-motion: reduce) { .book-card { animation: none; } .book-loading .hand { animation: none; } }
+@media (max-width: 860px) {
+  .book { padding: 0; }
+  .book-card { width: 100%; height: 100dvh; border-radius: 0; grid-template-columns: 1fr; grid-template-rows: auto 1fr; box-shadow: none; }
+  .book-side { border-right: 0; border-bottom: 1px solid var(--line); padding: 1rem 4.8rem .95rem 1.25rem; overflow: visible; }
+  .book-portrait, .book-steps, .book-steps-label, .book-note, .book-tab { display: none; }
+  .book-title { font-size: 1.4rem; margin: .35rem 0 .6rem; }
+  .book.done .book-done p { margin-top: .4rem; font-size: .88rem; }
+  .book-close { top: .9rem; right: .9rem; left: auto; }
+}
 </style>
 </head>
 <body>
@@ -836,6 +891,44 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     </div>
     <div class="player-caption"><span class="mono" id="playerDate"></span><span class="player-title" id="playerTitle"></span></div>
     <button class="player-next" id="playerNext" type="button">next video <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+
+<!-- ═══════════ BOOKING ROOM ═══════════ -->
+<div class="book" id="book" hidden>
+  <div class="book-backdrop" id="bookBackdrop"></div>
+  <div class="book-card" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+    <aside class="book-side">
+      <button class="book-close" id="bookClose" type="button">Close</button>
+      <div class="book-portrait" aria-hidden="true">
+        <div class="sun-disc"></div>
+        <img src="images/theia-cutout.webp" alt="" width="820" height="1190" loading="lazy"/>
+        <span class="ai-label">Theia · Generated by AI</span>
+      </div>
+      <span class="book-kicker">Discovery call</span>
+      <h2 class="book-title" id="bookTitle"><span class="book-before">Pick a time for <em>your call.</em></span><span class="book-done">You are booked. <em>See you soon.</em></span></h2>
+      <div class="book-meta"><span>45 minutes</span><span>Free</span><span>Online</span></div>
+      <div class="book-done"><p>Your confirmation and the call link are in your inbox.</p></div>
+      <span class="book-kicker book-steps-label">On the call</span>
+      <ol class="book-steps" data-aud="experts">
+        <li>We look at your content rhythm today and where it breaks.</li>
+        <li>We show you how your first month of videos would look, week by week.</li>
+        <li>You leave with a clear yes or no, and a sense of what the build involves.</li>
+      </ol>
+      <ol class="book-steps" data-aud="organizations">
+        <li>You bring one procedure or one slide deck.</li>
+        <li>We scope your first training module together.</li>
+        <li>We walk you through the three weeks, from your documents to the finished video.</li>
+      </ol>
+      <p class="book-note" data-aud="experts">We work with one expert at a time. Next start: <b id="bookStart">the next Monday</b>.</p>
+      <p class="book-note" data-aud="organizations">Training videos in English, French and Romanian.</p>
+      <a class="book-tab" href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" rel="noopener">Open the calendar in a new tab</a>
+    </aside>
+    <div class="book-main">
+      <div class="book-cal" id="bookCal"></div>
+      <div class="book-loading" aria-live="polite"><span class="hand">opening the calendar…</span></div>
+      <div class="book-failed"><div><p>The calendar did not load here.</p><a class="btn-primary book-tab-btn" href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" rel="noopener">Open the calendar</a></div></div>
+    </div>
   </div>
 </div>
 
@@ -1365,6 +1458,68 @@ document.querySelectorAll('.demo-card').forEach(card => {
   });
   video.addEventListener('ended', () => { video.muted = true; playBtn.style.opacity = '1'; playing = false; });
 });
+// Booking room: every "Book a call" opens the calendar on the page
+const CAL_URL = 'https://calendly.com/aiavatarcreations/30min-discovery-call';
+const book = document.getElementById('book');
+const bookCal = document.getElementById('bookCal');
+const bookClose = document.getElementById('bookClose');
+document.getElementById('bookStart').textContent = short(buildStart);
+let calScript = null, calKey = null, bookTrigger = null;
+const loadCal = () => calScript || (calScript = new Promise((resolve, reject) => {
+  const s = document.createElement('script');
+  s.src = 'https://assets.calendly.com/assets/external/widget.js';
+  s.async = true; s.onload = resolve; s.onerror = reject;
+  document.head.appendChild(s);
+}));
+const ctaPlace = el => el.closest('#nav') ? 'nav' : el.closest('footer') ? 'footer' : ((el.closest('section[id]') || {}).id || 'page');
+const openBook = (trigger) => {
+  bookTrigger = trigger;
+  const aud = document.documentElement.getAttribute('data-aud');
+  const place = ctaPlace(trigger);
+  book.hidden = false;
+  document.body.style.overflow = 'hidden';
+  bookClose.focus({ preventScroll: true });
+  if (book.classList.contains('done')) return;
+  loadCal().then(() => {
+    const key = aud + '|' + place;
+    if (key === calKey && bookCal.querySelector('iframe')) return;
+    calKey = key;
+    bookCal.innerHTML = '';
+    book.classList.add('loading');
+    Calendly.initInlineWidget({
+      url: CAL_URL + '?hide_event_type_details=1&background_color=fdfbf7&text_color=2c1a11&primary_color=d96b27',
+      parentElement: bookCal,
+      utm: { utmSource: 'website', utmMedium: 'booking-room', utmCampaign: aud, utmContent: place }
+    });
+    const frame = bookCal.querySelector('iframe');
+    if (frame) {
+      frame.title = 'Choose a time for your discovery call';
+      setTimeout(() => book.classList.remove('loading'), 15000);
+    }
+  }).catch(() => { book.classList.remove('loading'); book.classList.add('failed'); });
+};
+const closeBook = () => {
+  book.hidden = true;
+  document.body.style.overflow = '';
+  if (bookTrigger) bookTrigger.focus({ preventScroll: true });
+};
+document.querySelectorAll('a[href^="https://calendly.com/aiavatarcreations"]:not(.book-tab):not(.book-tab-btn)').forEach(a => {
+  a.addEventListener('pointerenter', () => { loadCal().catch(() => {}); }, { once: true });
+  a.addEventListener('click', (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    document.getElementById('navLinks').classList.remove('open');
+    openBook(a);
+  });
+});
+window.addEventListener('message', (e) => {
+  if (e.origin !== 'https://calendly.com' || !e.data || typeof e.data.event !== 'string') return;
+  if (e.data.event === 'calendly.event_type_viewed' || e.data.event === 'calendly.date_and_time_selected') book.classList.remove('loading');
+  if (e.data.event === 'calendly.event_scheduled') { book.classList.remove('loading'); book.classList.add('done'); }
+});
+bookClose.addEventListener('click', closeBook);
+document.getElementById('bookBackdrop').addEventListener('click', closeBook);
+document.addEventListener('keydown', (e) => { if (!book.hidden && e.key === 'Escape') closeBook(); });
 </script>
 
 </body>
