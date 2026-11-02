@@ -698,6 +698,20 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
 .offers-guide { text-align: center; max-width: 640px; margin: 2.25rem auto 0; font-family: var(--f-serif); font-style: italic; font-size: 1.15rem; line-height: 1.55; color: var(--mahogany-soft); }
 .offers-guide b { font-style: normal; font-family: var(--f-sans); font-weight: 500; color: var(--mahogany); }
 .offers-grid.one { align-items: start; }
+/* ─── SIMPLE EXPERTS TAB ─── */
+.how .system-head { max-width: 900px; }
+.how .system-flow { margin-top: 2.25rem; }
+.how .system-step { padding: 1.35rem 1.4rem; }
+.how .system-step h3 { font-size: 1.35rem; }
+@media (max-width: 600px) {
+  .how .system-flow { gap: .7rem; margin-top: 1.75rem; }
+  .how .system-arrow { display: none; }
+  .how .system-step { display: grid; grid-template-columns: 2.6rem 1fr; column-gap: .9rem; align-items: start; padding: 1rem 1.1rem; text-align: left; }
+  .how .system-step i { grid-row: span 2; width: 2.6rem; height: 2.6rem; margin: 0; font-size: 1rem; }
+  .how .system-step h3 { font-size: 1.2rem; margin-bottom: .15rem; }
+  .how .system-step p { font-size: .93rem; line-height: 1.5; }
+}
+
 /* ─── BOOKING ROOM: the calendar opens on the page ─── */
 .book { position: fixed; inset: 0; z-index: 220; display: grid; place-items: center; padding: 1.25rem; }
 .book[hidden] { display: none; }
@@ -796,8 +810,9 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
   </a>
   <div class="nav-links" id="navLinks">
     <div class="aud-switch nav-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true"><span class="long">For coaches and experts</span><span class="short">Coaches &amp; experts</span></button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
-    <a href="#system"><span data-aud="experts">The System</span><span data-aud="organizations">The Process</span></a>
+    <a href="#system" data-aud="organizations">The Process</a>
     <a href="#demos">See It in Action</a>
+    <a href="#how" data-aud="experts">How It Works</a>
     <a href="#offers">Offers</a>
     <a href="#about">About</a>
     <a href="#questions">Questions</a>
@@ -823,7 +838,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
           </span>
           <span class="hero-reel-cap"><span class="mono">Theia · our avatar</span><span class="hand">yours could too</span></span>
         </button>
-        <p class="hero-sub">We build your AI avatar and your AI content system with you, then we teach you to use them. The system knows your business, your clients and the way you speak, so it writes a month of scripts that sound like you. Your avatar presents them on video, you approve each one before it is published, and you never have to film.</p>
+        <p class="hero-sub">We create your AI avatar and a month of videos in your voice. You approve every video, and you never have to film.</p>
         <div class="hero-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
             Book a Discovery Call
@@ -831,7 +846,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
           </a>
           <a href="#demos" class="hero-note"><span class="hand">see the videos</span><svg viewBox="0 0 44 30" aria-hidden="true"><path d="M3 5c8 16 22 21 35 15"/><path d="M31 14l7 6-9 3"/></svg></a>
         </div>
-        <p class="hero-dates">Book this week: we start on <b id="hdStart">the next Monday</b>, and your <b id="hdMonth">first month</b> is already scheduled. The call is 45 minutes, free and online.</p>
+        <p class="hero-dates">Start on <b id="hdStart">the next Monday</b>, and your <b id="hdMonth">first month</b> is already scheduled.</p>
       </div>
       <div class="hero-visual" data-aud="experts">
         <div class="sun-disc" aria-hidden="true"></div>
@@ -975,33 +990,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><div class="ticker-group"><span>Your own avatar and voice</span><span class="sep">✦</span><span>Scripts written in your voice</span><span class="sep">✦</span><span>You keep the system</span><span class="sep">✦</span><span>With or without an avatar</span><span class="sep">✦</span><span>Always disclosed as an avatar</span><span class="sep">✦</span><span>For experts and for organizations</span><span class="sep">✦</span></div><div class="ticker-group"><span>Your own avatar and voice</span><span class="sep">✦</span><span>Scripts written in your voice</span><span class="sep">✦</span><span>You keep the system</span><span class="sep">✦</span><span>With or without an avatar</span><span class="sep">✦</span><span>Always disclosed as an avatar</span><span class="sep">✦</span><span>For experts and for organizations</span><span class="sep">✦</span></div></div></div>
 
 <!-- ═══════════ AI CONTENT SYSTEM ═══════════ -->
-<section class="section system reveal" id="system">
-  <div class="w" data-aud="experts">
-    <div class="system-head">
-      <div class="section-eyebrow">The AI content system</div>
-      <h2 class="section-title">An AI assistant writes your scripts in your voice, <em>or you write your own.</em></h2>
-    </div>
-    <div class="system-flow">
-      <div class="system-step"><i>1</i><h3>Your business, in your words</h3><p>We write down who you help, what you offer and how you speak, and we add your best posts and the questions your clients ask.</p></div>
-      <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>2</i><h3>The AI writes, or you do</h3><p>The assistant reads all of it and writes a month of scripts in your voice. Scripts you write yourself go into the same plan.</p></div>
-      <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>3</i><h3>You decide</h3><p>You read every script and fix or remove anything that does not sound like you. Approved scripts go into your planner, each with a date.</p></div>
-    </div>
-    <p class="hand system-fork-label">then you choose how each video gets made</p>
-    <div class="system-fork">
-      <div class="fork-card avatar">
-        <span class="fork-tag">With your avatar</span>
-        <h3>Your avatar <em>presents it.</em></h3>
-        <p>Your AI avatar, made from your photos and your voice, delivers the script on video. You never have to film.</p>
-      </div>
-      <div class="fork-card">
-        <span class="fork-tag">Without an avatar</span>
-        <h3>You <em>film the video.</em></h3>
-        <p>You film it yourself. The script is already written, and the month is already planned.</p>
-      </div>
-    </div>
-  </div>
+<section class="section system reveal" id="system" data-aud="organizations">
   <div class="w" data-aud="organizations">
     <div class="system-head">
       <div class="section-eyebrow">The process</div>
@@ -1039,7 +1028,6 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
 
     <!-- Experts & Educators -->
     <div class="demos-group" data-aud="experts">
-      <div class="demos-label">Experts & Educators</div>
       <div class="demos-row three">
         <div class="demo-card portrait" data-video="videos/iliana-demo.mp4">
           <video muted loop playsinline preload="metadata" poster="images/poster-iliana-demo.jpg">
@@ -1127,6 +1115,23 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
   </div>
 </section>
 
+<!-- ═══════════ HOW IT WORKS (experts) ═══════════ -->
+<section class="section system how reveal" id="how" data-aud="experts">
+  <div class="w">
+    <div class="system-head">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">Three steps to <em>your first month.</em></h2>
+    </div>
+    <div class="system-flow">
+      <div class="system-step"><i>1</i><h3>We create your avatar</h3><p>From your photos and your voice, in one live session.</p></div>
+      <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="system-step"><i>2</i><h3>The AI writes your month</h3><p>Scripts in your voice, from your own posts and the questions your clients ask.</p></div>
+      <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="system-step"><i>3</i><h3>You approve every video</h3><p>Nothing goes out until you say yes. Then it is scheduled.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ OFFERS ═══════════ -->
 <section class="section offers reveal" id="offers">
   <div class="w">
@@ -1144,14 +1149,13 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         <div class="offer-sticker" aria-hidden="true">4<br/>weeks</div>
         <div class="offer-tag">For experts</div>
         <h3>The Month Ahead</h3>
-        <div class="offer-subtitle">Four weeks together: we build your avatar and the Content OS that writes your scripts, and then we teach you to run it on your own. The system works <em>with your avatar</em>, or <em>with videos you film yourself</em>.</div>
+        <div class="offer-subtitle">Four weeks together. We build your avatar and your system, make your first month of videos with you, and <em>teach you to run it</em>.</div>
         <div class="offer-divider"></div>
         <ul class="offer-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Who you help, what you offer and how you speak, written down so the scripts sound like you</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your avatar and your voice, included</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Twelve videos scripted, produced, captioned and scheduled with you</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your Content OS, installed in your own Notion and connected to Claude or ChatGPT, with a written guide</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A handover session, and a check-in four to six weeks later</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your avatar and your voice</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Twelve videos, scripted, captioned and scheduled with you</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your Content OS, the system that writes your scripts, yours to keep</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Works with your avatar, or with videos you film yourself</li>
         </ul>
         <div class="offer-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
@@ -1168,8 +1172,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         <div class="offer-divider"></div>
         <ul class="offer-list">
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your avatar or AI twin, and your voice</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Three looks, with one video for each</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>You bring three scripts, and we make the three videos together in the session, unedited, ready for your own editing</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Three looks, one video each, from your own scripts</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything stays in your own accounts, in your name</li>
         </ul>
         <div class="offer-cta">
@@ -1207,7 +1210,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         <p>Most teams start with a single onboarding or safety video, three to five minutes long, and decide on the library after they have watched it with their own people.</p>
       </div>
     </div>
-    <p class="offers-guide" data-aud="experts">Not sure which one? <b>The Avatar Build</b> if you already have scripts and a plan. <b>The Month Ahead</b> if you want the whole system and a month of videos scheduled. Or book the call and we choose together.</p>
+    <p class="offers-guide" data-aud="experts">Not sure which one? Book the call and we choose together.</p>
     <p class="offers-note hand" data-aud="organizations">bring one procedure or one deck to the call, and we scope the first module</p>
     <div class="crosslink" data-aud="experts"><p>Do you run a team instead? <button type="button" class="aud-link" data-aud-go="organizations">See the training videos for organizations</button></p></div>
     <div class="crosslink" data-aud="organizations"><p>Are you an independent expert? <button type="button" class="aud-link" data-aud-go="experts">See the Content OS and the avatar for experts</button></p></div>
@@ -1229,9 +1232,11 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <div class="founder-copy">
       <div class="section-eyebrow">About me &middot; The founder</div>
       <h2 class="section-title">Three careers, <em>one system.</em></h2>
-      <p class="founder-lead">I taught primary school for nine years, and teaching was my main mission. Then I immigrated to Canada and rebuilt my life from zero.</p>
-      <p class="section-sub">For twenty years I worked in IT for banks and insurance companies, as a developer, a business analyst and a QA analyst, and then I became a certified coach. In 2024 I left the corporate world to work in AI. I built Theia, my own avatar, and the content system behind her, and I run everything I offer on my own brand first.</p>
-      <ul class="founder-rules">
+      <p class="founder-lead" data-aud="experts">I taught primary school for nine years, rebuilt my life in Canada, and spent twenty years in IT for banks as a developer, business analyst and QA analyst. Then I became a certified coach.</p>
+      <p class="section-sub" data-aud="experts">In 2024 I built Theia, my own avatar, and the system behind her. I run everything I offer on my own brand first.</p>
+      <p class="founder-lead" data-aud="organizations">I taught primary school for nine years, and teaching was my main mission. Then I immigrated to Canada and rebuilt my life from zero.</p>
+      <p class="section-sub" data-aud="organizations">For twenty years I worked in IT for banks and insurance companies, as a developer, a business analyst and a QA analyst, and then I became a certified coach. In 2024 I left the corporate world to work in AI. I built Theia, my own avatar, and the content system behind her, and I run everything I offer on my own brand first.</p>
+      <ul class="founder-rules" data-aud="organizations">
         <li><i>1</i><div><h3>The teacher</h3><p>A teacher has done her job the day you can do it alone, so I explain every step of your system until you run it without me.</p></div></li>
         <li><i>2</i><div><h3>The tester</h3><p>A tester notices the small flaws others miss, so every avatar video is checked before it goes out: the stiff hand, the smile on the wrong word, the stare that holds too long.</p></div></li>
         <li><i>3</i><div><h3>The coach</h3><p>A good coach works so that one day you do not need her, so I hand you the system in the first month.</p></div></li>
@@ -1251,7 +1256,6 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <div class="questions-split">
       <!-- Experts -->
       <div class="q-column" data-aud="experts">
-        <div class="q-column-label">Experts</div>
         <details class="q-item">
           <summary><div class="q-question">"Will people know it is an avatar?"</div></summary>
           <div class="q-answer">Yes, because we say so on every video. When the avatar is clearly disclosed, your clients keep trusting you. Trust breaks only when an avatar is hidden.</div>
@@ -1261,16 +1265,8 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
           <div class="q-answer">That happens when the AI was never trained on your material. We start with your posts, your articles and your messages, so the scripts sound like you. And you can always write a script yourself and make the video from it.</div>
         </details>
         <details class="q-item">
-          <summary><div class="q-question">"I'm not technical."</div></summary>
-          <div class="q-answer">You don't need to be. We handle the technical side during the build, and at the end you learn to run the system with a written guide. That's what the handover is for.</div>
-        </details>
-        <details class="q-item">
           <summary><div class="q-question">"How much of my time does it take?"</div></summary>
           <div class="q-answer">About four hours for the build session in week one. After that, a few hours a week to approve the scripts, make the videos and review them with us. Once you run it alone, you set the pace.</div>
-        </details>
-        <details class="q-item">
-          <summary><div class="q-question">"What happens when we stop working together?"</div></summary>
-          <div class="q-answer">You keep the system. That's what you paid for.</div>
         </details>
       </div>
       <!-- Organizations -->
@@ -1332,8 +1328,9 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <div class="footer-links">
       <button type="button" class="aud-link" data-aud-go="experts">For coaches and experts</button>
       <button type="button" class="aud-link" data-aud-go="organizations">For organizations</button>
-      <a href="#system"><span data-aud="experts">The System</span><span data-aud="organizations">The Process</span></a>
+      <a href="#system" data-aud="organizations">The Process</a>
       <a href="#demos">Demos</a>
+      <a href="#how" data-aud="experts">How It Works</a>
         <a href="#offers">Offers</a>
       <a href="#about">About</a>
       <a href="#questions">Questions</a>
