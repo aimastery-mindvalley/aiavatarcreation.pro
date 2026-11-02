@@ -605,7 +605,8 @@ html[data-aud="organizations"] .aud-thumb { transform: translateX(100%); }
 .nav-switch .aud-thumb { box-shadow: none; }
 @media (max-width: 1280px) and (min-width: 961px) { .nav-switch { display: none; } }
 @media (max-width: 960px) { .nav-links.open .nav-switch { display: inline-grid; align-self: center; } }
-@media (max-width: 480px) { .aud-btn { padding: .55rem .8rem; font-size: .6rem; letter-spacing: .12em; } }
+.aud-btn .short { display: none; }
+@media (max-width: 480px) { .aud-btn { padding: .55rem .8rem; font-size: .6rem; letter-spacing: .12em; } .aud-btn .long { display: none; } .aud-btn .short { display: inline; } }
 
 /* library board (organizations hero) */
 .board.library { width: min(100%, clamp(320px, 58svh, 480px)); transform: rotate(1deg); }
@@ -706,7 +707,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <span class="wordmark">AI Avatar Creations</span><svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
   </a>
   <div class="nav-links" id="navLinks">
-    <div class="aud-switch nav-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true">For experts</button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
+    <div class="aud-switch nav-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true"><span class="long">For coaches and experts</span><span class="short">Coaches &amp; experts</span></button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
     <a href="#system"><span data-aud="experts">The System</span><span data-aud="organizations">The Process</span></a>
     <a href="#demos">See It in Action</a>
     <a href="#offers">Offers</a>
@@ -724,7 +725,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
   <div class="w">
     <div class="hero-inner">
       <div class="hero-content" data-aud="experts">
-        <div class="aud-switch hero-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true">For experts</button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
+        <div class="aud-switch hero-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true"><span class="long">For coaches and experts</span><span class="short">Coaches &amp; experts</span></button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
         <h1>A month of video content <span class="circled">ahead<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M40 12C95 0 190 4 210 38C225 66 150 88 85 84C25 80 2 60 8 38C14 20 45 8 75 8"/></svg></span>, <span class="glow">without filming yourself.</span></h1>
         <p class="hero-sub">I build your AI avatar and your Content OS with you, then I teach you to run them. The system writes a month of scripts in your voice, your avatar presents them on video, and you approve each one before it goes out.</p>
         <div class="hero-cta">
@@ -766,9 +767,9 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
         </div>
       </div>
       <div class="hero-content" data-aud="organizations">
-        <div class="aud-switch hero-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true">For experts</button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
+        <div class="aud-switch hero-switch" role="group" aria-label="Who is this for"><span class="aud-thumb" aria-hidden="true"></span><button type="button" class="aud-btn" data-aud-pick="experts" aria-pressed="true"><span class="long">For coaches and experts</span><span class="short">Coaches &amp; experts</span></button><button type="button" class="aud-btn" data-aud-pick="organizations" aria-pressed="false">For organizations</button></div>
         <h1>Your team's knowledge, <span class="circled">on video<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M40 12C95 0 190 4 210 38C225 66 150 88 85 84C25 80 2 60 8 38C14 20 45 8 75 8"/></svg></span>, <span class="glow">without a studio.</span></h1>
-        <p class="hero-sub">I turn your technical documentation, manuals, procedures and training packages into training and onboarding videos, delivered by an AI avatar presenter in the terms your teams already use. Your team signs off every script, and when the content changes I update the video without re-shooting a full session.</p>
+        <p class="hero-sub">I turn your manuals, procedures and training packages into onboarding and training videos, presented by an AI avatar in the terms your teams already use. Your team signs off every script.</p>
         <div class="hero-cta">
           <a href="https://calendly.com/aiavatarcreations/30min-discovery-call" target="_blank" class="btn-primary">
             Book a Discovery Call
@@ -873,15 +874,14 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
     <div class="system-head">
       <div class="section-eyebrow">The process</div>
       <h2 class="section-title">From your documents to a finished video, <em>with your sign-off at every step.</em></h2>
-      <p class="section-sub">Your technical documentation, manuals, procedures and training packages are the source material. Following ADDIE, the standard instructional design model, I turn them into clear scripts with your subject matter experts, and your approver signs each one off before production.</p>
-      <p class="section-sub">Every video is delivered as a file you own: an MP4 for your intranet, shared drive or controlled document management system, or a SCORM package for your learning management system.</p>
+      <p class="section-sub">Your technical documentation, manuals, procedures and training packages are the source material. I turn them into clear scripts with your subject matter experts, and your approver signs each one off before production.</p>
     </div>
     <div class="system-flow">
       <div class="system-step"><i>1</i><h3>Your knowledge, collected</h3><p>We pick the first module and gather the source: the manual, the deck, or a conversation with the person who knows the procedure best.</p></div>
       <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>2</i><h3>The script, in your tone</h3><p>I write a script that says one thing clearly, in the words your teams use. Your subject matter expert corrects it, and your approver signs it off.</p></div>
+      <div class="system-step"><i>2</i><h3>The script, in your tone</h3><p>Following ADDIE, the standard instructional design model, I write a script that says one thing clearly, in the words your teams use. Your subject matter expert corrects it, and your approver signs it off.</p></div>
       <div class="system-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="system-step"><i>3</i><h3>The video, in every language</h3><p>An avatar presenter delivers the approved script, with captions and your branding, in the languages your teams speak.</p></div>
+      <div class="system-step"><i>3</i><h3>The video, in every language</h3><p>An avatar presenter delivers the approved script, with captions and your branding, in the languages your teams speak. Delivered as an MP4 for your intranet or controlled document management system, or as a SCORM package for your learning management system.</p></div>
     </div>
     <p class="hand system-fork-label">then you choose who presents it</p>
     <div class="system-fork">
@@ -943,7 +943,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
           <div class="demo-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           <div class="demo-card-info">
             <div class="demo-card-name">Antoneta Dumitrașcu &middot; Autism</div>
-            <div class="demo-card-desc">Script created with an AI-powered system and video edited with my system, no avatar (Romanian).</div>
+            <div class="demo-card-desc">Scripted with the system, filmed herself (Romanian)</div>
           </div>
         </div>
       </div>
@@ -1200,7 +1200,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
       <span class="hand">sharing your knowledge</span>
     </div>
     <div class="footer-links">
-      <button type="button" class="aud-link" data-aud-go="experts">For experts</button>
+      <button type="button" class="aud-link" data-aud-go="experts">For coaches and experts</button>
       <button type="button" class="aud-link" data-aud-go="organizations">For organizations</button>
       <a href="#system"><span data-aud="experts">The System</span><span data-aud="organizations">The Process</span></a>
       <a href="#demos">Demos</a>
