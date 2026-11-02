@@ -782,6 +782,8 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
   .hero-reel-cap { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; padding: .55rem .2rem 0; }
   .hero-reel-cap .mono { white-space: nowrap; font-family: var(--f-mono); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--cognac-deep); }
   .hero-reel-cap .hand { font-size: 1.1rem; line-height: 1; white-space: nowrap; }
+  /* the Theia reel already plays in the phone hero, so the demos keep client work only */
+  .theia-demo, .not-phone { display: none !important; }
 }
 </style>
 </head>
@@ -1032,7 +1034,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
 <section class="section demos reveal" id="demos">
   <div class="w">
     <div class="section-eyebrow" style="justify-content:center">See It in Action</div>
-    <h2 class="section-title" style="text-align:center" data-aud="experts">Videos from <em>client projects</em>, and our own</h2>
+    <h2 class="section-title" style="text-align:center" data-aud="experts">Videos from <em>client projects</em><span class="not-phone">, and our own</span></h2>
     <h2 class="section-title" style="text-align:center" data-aud="organizations">Training videos from <em>client projects</em></h2>
 
     <!-- Experts & Educators -->
@@ -1051,7 +1053,7 @@ button.lib-row:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 14px 30px rg
             <div class="demo-card-desc">Coaches</div>
           </div>
         </div>
-        <div class="demo-card portrait" data-video="videos/hero-dont-film-every-reel.mp4">
+        <div class="demo-card portrait theia-demo" data-video="videos/hero-dont-film-every-reel.mp4">
           <video muted loop playsinline preload="metadata" poster="images/poster-theia-demo.jpg">
             <source src="videos/hero-dont-film-every-reel.mp4" type="video/mp4"/>
           </video>
